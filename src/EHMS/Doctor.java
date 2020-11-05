@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.Scanner;
 public class Doctor extends Person
 {
-	/////////////////////// int DocID;////////////////////
 	String Department;
 	String Degree;
 	int Entry_Charge;

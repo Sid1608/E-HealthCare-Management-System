@@ -58,6 +58,7 @@ create table Reports
     MedicinePrescribed varchar(20),
     DoctorComment varchar(100),
     billAmount int,
+    status varchar(10),
     primary key (ReportID)
 );
 create table feedback
