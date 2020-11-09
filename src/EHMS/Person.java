@@ -18,7 +18,7 @@ public class Person
 	Scanner sc=new Scanner(System.in);
 	protected void UserInformation()
 	{
-    	System.out.println("Enter the following Details");
+    	
     	System.out.println("First Name:");
     	First_Name=sc.next();
     	System.out.println("Last Name:");

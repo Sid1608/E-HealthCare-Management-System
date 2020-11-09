@@ -6,69 +6,38 @@ public class Admin extends Person
 {
 	
 	Scanner sc =new Scanner(System.in);
-	private  int pid;
 	private  int docid;
-	private static int temp1;
-	private static int temp2;
+	private static int temp;
 	static
 	{
-		temp1=1;
-		temp2=1;
+		temp=1;
 	}
-	static int generatePatientID()
+	private static int generateDoctorID()
 	{
-		
-		try
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-		
-			ResultSet rs=st.executeQuery("Select MAX(UserID) from Users where userType is Patient");
-			rs.next();
-			rs.getInt("MAX(UserID)");
-			if(rs.getInt("MAX(UserID)"))
-				return 1;
-			else
-				return id+1;
-				
-			
-		}catch(Exception e)
-		{
-			
-		}
+		return ++temp;
 	}
-	static int generateDoctorID()
-	{
-		return temp2++;
-	}
-	public int addPatient() 
-	{
-		int PatientID=generatePatientID();
-		String password;
-		String cpd;
-		System.out.println("Patient ID:"+PatientID);
-		System.out.println("Enter Password:");
-		password=sc.next();
-		while(true)
-		{
-			System.out.println("Confirm Password");
-			cpd=sc.next();
-			if(password.compareTo(cpd)==0)
-					break;
-		}
-		try {
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			st.executeUpdate("insert into Users values('"+PatientID+"','"+password+"','"+"Patient"+"')");
-			System.out.println("Registered Succesfully!!");
-		}catch(Exception e){
-			System.out.println("Please enter data in correct format!!");
-		}
-		return PatientID;
-		
-		
-		
-	}
+//	private void generatePatientID()
+//	{
+//		
+//		try
+//		{
+//			Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//		
+//			ResultSet rs=st.executeQuery("Select MAX(UserID) from Users where userType='Patient'");
+//			rs.next();
+//			rs.getInt("MAX(UserID)");
+////			if(rs.getInt("MAX(UserID)"))
+////				return 1;
+////			else
+////				return id+1;
+//				
+//			
+//		}catch(Exception e)
+//		{
+//			
+//		}
+//	}
 	public int addDoctor()
 	{
 		int DoctorID=generateDoctorID();

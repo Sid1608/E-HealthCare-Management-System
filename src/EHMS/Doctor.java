@@ -7,41 +7,84 @@ import java.sql.Statement;
 import java.util.Scanner;
 public class Doctor extends Person
 {
-	/////////////////////// int DocID;////////////////////
-	String Department;
-	String Degree;
+	int docid;
+	String Doctor_Type;
+	String Qualification;
 	int Entry_Charge;
 	Scanner sc=new Scanner(System.in);
 	public void DoctorRegistration(int docid)
 	{
+		System.out.println("Enter the following Details");
+		this.docid=docid;
+		System.out.println("Doctor ID "+docid);
 		super.UserInformation();
     	System.out.println("EntryFee");
     	Entry_Charge=sc.nextInt();
-    	System.out.println("Degree:");
-    	Degree=sc.next();
-    	System.out.println("Department:");
-    	Department=sc.next();
-    	Register reg=new Register();
-    	reg.doctor_Registration(docid,First_Name,Last_Name,Gender,CN,age,Entry_Charge,Degree,Department);
+    	System.out.println("Qualification:");
+    	Qualification=sc.next();
+    	System.out.println("Doctor_Type:");
+    	System.out.println("1.Eyes\n 2.EAR.\n3.Heart\n4.Bone\n5.Lungs\n6.Kidney\n7.General_Physicist");
+    	int ch=sc.nextInt();
+    	switch(ch)
+		{
+			case 1:
+			{
+				Doctor_Type="Eyes";
+			}
+			case 2:
+			{
+				Doctor_Type="Ear";
+			}
+			case 3:
+			{
+				Doctor_Type="Heart";
+			}
+			case 4:
+			{
+				Doctor_Type="Bone";
+			}
+			case 5:
+			{
+				Doctor_Type="Lungs";
+			}
+			case 6:
+			{
+				Doctor_Type="Kidney";
+			}
+			case 7:
+			{
+				Doctor_Type="General Physicist";
+			}
+		}
+		Register reg=new Register();
+    	reg.doctor_Registration(docid,First_Name,Last_Name,Gender,CN,age,Entry_Charge,Qualification,Doctor_Type,Email_Address);//change the database
 	}
 
-	public void ShowDoctorDetails()
+	public void ShowDoctorDetails(int d)
 	{
-		System.out.println("DoctorID:"+DocID);
-		System.out.println("Name:"+First_Name+" "+Last_Name);
-		System.out.println("Degree"+Degree);
-		System.out.println("Department"+Department);
-		System.out.println("Mobile No:"+CN);
-		System.out.println("EmailId:"+Email_Address);
+
+    	try {
+    		Connection con=ConnectionProvider.getCon();
+    		Statement st=con.createStatement();
+    		ResultSet rs=st.executeQuery("Select * from Patients where pid=id");
+    		while(rs.next())
+    		{
+    			
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		
+    	}
 	}
 	public void viewAppointment()
 	{
 		
 	}
-	public void CancelAppointmet()
-	{
-		
-	}
+//	public void CancelAppointmet()
+//	{
+//		
+//	}
 	public void viewPatient()
 	{
 		try 

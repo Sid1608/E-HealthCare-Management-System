@@ -7,20 +7,24 @@ public class Main
 {
 	public static void main(String[] args) 
 	{
-		System.out.println("******************************E-HealthCare-Management-Sytem**********************************");
+		System.out.println("*************E-HealthCare-Management-Sytem*************");
 		Scanner sc=new Scanner(System.in);
 		Admin a=new Admin();
 		Patients p=null;
 		Doctor d=null;
-		while(true)
+		Appointment[] pat_app=new Appointment[10000];
+		Appointment[] doc_app=new Appointment[10000];
+		Patients[] P=new Patients[10000];
+		Doctor[] D=new Doctor[10000];
+		while(true)//this is to inform you that 
 		{
-		System.out.println("1.AdminLogin\n 2.DoctorLogin.\n3.PatientLogin \n");		
+		System.out.println("1.AdminLogin\n 2.DoctorLogin.\n3.PatientLogin \n4.Patient-SignUp\n5.Doctor-SignUp");		
 		int choice = sc.nextInt();
 		switch (choice)
 		{
 		    case 1:  // admins portal
 		    {   
-		    	System.out.println("***********Welcome to Admins portal******************");
+		    	System.out.println("************Welcome to Admins portal************");
 		    	String un;
 		    	String pd;
 		    	System.out.print("USERNAME-->");un=sc.next();
@@ -29,7 +33,7 @@ public class Main
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.ViewDoctors\n2.ViewPatients.\n3.AddPatient\n4.AddDoctor\n5.RemovePatient\n6.RemoveDoctor\n7.viewAppointments\n8.viewPaymentDetils\n9.updateDoctorsdetails\n10.UpdatePatientDetails");
+		    			System.out.println("1.viewDoctors\n2.viewPatients.\n3.addDoctor\n4.removePatient\n5.RemoveDoctor\n6.viewAppointments\n7.viewPaymentDetils\n8.updateDoctorsdetails\n9.UpdatePatientDetails");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -45,33 +49,26 @@ public class Main
 		    				}
 		    				case 3:
 		    				{
-		    					int id=a.addPatient();
-		    			    	p=new Patients();
-		    					p.PatientRegistration(id);
-		    					break;
-		    				}
-		    				case 4:
-		    				{
 		    					int Id=a.addDoctor();
 		    					d=new Doctor();
 		    					d.DoctorRegistration(Id);
 		    					break;
 		    				}
-		    				case 5:
+		    				case 4:
 		    				{
-		    					System.out.println("Enter doctorID!!");
+		    					System.out.println("Enter doctor_ID!!");
 		    					int id=sc.nextInt();
 		    					a.RemoveDoctor(id);
 		    					break;
 		    				}
-		    				case 6:
+		    				case 5:
 		    				{
-		    					System.out.println("Enter doctorID!!");
+		    					System.out.println("Enter Patient_ID!!");
 		    					int id=sc.nextInt();
 		    					a.RemovePatient(id);
 		    					break;
 		    				}
-		    				case 7:
+		    				case 6:
 		    				{
 		    					break;
 		    				}
@@ -86,39 +83,40 @@ public class Main
 		    case 2:   //For Patient   
 		    {
 		    	int flag=0;
-		    	System.out.println("*****************Welcome to patient portal***********************");
-		    	String un;
+		    	System.out.println("*****************Welcome to patient portal*****************");
+		    	int id;
 		    	String pd;
 		    	String userType="Patient";
-		    	System.out.print("USERNAME:");un=sc.next();
+		    	System.out.print("ID:");id=sc.nextInt();
 		    	System.out.print("Password:");pd=sc.next();
 		    	try {
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeUpdate("");
+					st.executeUpdate("Select * from where ");
 					flag=1;
 				}catch(Exception e){
-					System.out.println("Not Registerd");
+					System.out.println("Not Registerd"+e.getMessage());
 				}
 		    	if(flag==1)
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.ViewProfile\n 2.viewDoctors.\n3.BookAppointments\n4.CancelAppointment\n5.PayBill\n6.ViewReport\n7.view Appointments\n.ChangePassword\n.Logout");
+		    			System.out.println("1.ViewProfile\n2.viewDoctors.\n3.BookAppointments\n4.CancelAppointment\n5.PayBill\n6.ViewReport\n7.viewAppointments\n.ChangePassword\n.Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
 		    				case 1:
 		    				{
-		    					
+		    					P[id].ShowPatientDetails(id);
 		    				}
 		    				case 2:
 		    				{
-		    					
+		    					P[id].viewDoctor();
 		    				}
 		    				case 3:
 		    				{
-		    					System.out.println("Enter your Problem!!!");
+		    					
+		    					P[id].BookAppointment(id);
 		    					
 		    				}
 		    				case 4:
@@ -137,12 +135,12 @@ public class Main
 		    }
 		    case 3: //For Doctor
 		    {
-		    	System.out.println("Welcome to Doctors portal");
+		    	System.out.println("Welcome to Doctor's portal");
 		    	int flag=0;
-		    	String un;
+		    	int id;
 		    	String pd;
 		    	String userType="Doctor";
-		    	System.out.print("USERNAME:");un=sc.next();
+		    	System.out.print("USERNAME:");id=sc.nextInt();
 		    	System.out.print("Password:");pd=sc.next();
 		    	try {
 					Connection con=ConnectionProvider.getCon();
@@ -152,17 +150,24 @@ public class Main
 				}catch(Exception e){
 					System.out.println("Not Registerd");
 				}
+		    	finally {
+		    		System.out.println(" Succesfully Logged In !! ");
+		    	}
 		    	if(flag==1)
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.View profile\n 2.viewAppointments.\n3.Cancel Appointments\n4.\n5.\n6.\n7.view Appointments\n.8Logout");
+		    			System.out.println("1.viewProfile\n2.viewAppointments.\n3.cancelAppointments\n4Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
 		    				case 1:
 		    				{
-		    			
+		    					D[id].ShowDoctorDetails(id);
+		    				}
+		    				case 2:
+		    				{
+		    					
 		    				}
 		    			}
 		    		}
@@ -172,7 +177,16 @@ public class Main
 		    }
 		    case 4: 
 		    {
+		    	p=new Patients();
+		    	int pid=p.addPatient();
+		    	System.out.println("Fill the following details");
+		    	p.PatientRegistration(pid);
+		    	
 		    	break;
+		    }
+		    case 5:
+		    {
+		    	
 		    }
 		}
 		}
