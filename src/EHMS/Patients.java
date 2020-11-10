@@ -9,40 +9,42 @@ public class Patients extends Person
 	//private int PatientID;
 	Scanner sc=new Scanner(System.in);
     String BloodGroup ;
-    private static int temp;
-    static
-    {
-    	temp=0;
-    }
-    private static int generatePatientID()
-    {
-    	return ++temp;
-    }
-//    private void generatePatientID()
-//	{
-//		
-//		try
-//		{
-//			Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//		
-//			ResultSet rs=st.executeQuery("Select MAX(UserID) from Users where userType='Patient'");
-//			rs.next();
-//			rs.getInt("MAX(UserID)");
-////			if(rs.getInt("MAX(UserID)"))
-////				return 1;
-////			else
-////				return id+1;
-//				
-//			
-//		}catch(Exception e)
-//		{
-//			
-//		}
-//	}
+//    private static int temp;
+//    static
+//    {
+//    	temp=0;
+//    }
+//    private static int generatePatientID()
+//    {
+//    	return ++temp;
+//    }
+    private int AutoPatientID()
+	{
+		
+		try{
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("Select MAX(UserID) as NextUserID from Users where userType='Patient'");
+			rs.next();
+			rs.getInt("NextUserID");
+			if(rs.getInt("NextUserID")==0)
+			{
+				return 1;
+			}
+			else
+			{
+				return (int)(rs.getInt("NextUserID"))+1;
+			}	
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+    
+    
     public int addPatient() 
 	{
-		int PatientID=generatePatientID();
+		int PatientID=AutoPatientID();
 		String password;
 		String cpd;
 		System.out.println("Patient ID:"+PatientID);
@@ -111,31 +113,41 @@ public class Patients extends Person
     public void BookAppointment(int id) 
     {
     	Appointment ap=new Appointment();
+    	ap.BookAppointment(id);
     	
     	
     	
+    	
+    }
+    public void billpayment()
+    {
     	
     }
     public void viewAppointment() 
     {
-    	
+    	try {
+    		
+    	}
+    	catch(Exception e) {
+    		
+    	}
     }
-    public void GetPatientStatus() 
-    {
-    	
-    }
+//    public void GetPatientStatus() 
+//    {
+//    	
+//    }
     public void ViewReport()
     {
-    	
+    	try {
+    		
+    	}catch(Exception e) {
+    		
+    	}
     }
-    
-    
-    public void assignDoctor() 
+    public void Givefeedback() 
     {
     	
     }
-    public void billpayment() {}
-    public void Givefeedback() {}
    
     
     

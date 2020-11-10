@@ -22,7 +22,8 @@ public class Register
 
 	}
 	public void doctor_Registration(int docid,String fn,String ln,String G,String cn,int age,int ec,String Q,String dt,String ed)
-	{//docid,First_Name,Last_Name,Gender,CN,age,Entry_Charge,Qualification,Doctor_Type,Email_Address
+	{
+		//docid,First_Name,Last_Name,Gender,CN,age,Entry_Charge,Qualification,Doctor_Type,Email_Address
 		try 
 		{
 			Connection con=ConnectionProvider.getCon();

@@ -18,7 +18,7 @@ public class Main
 		Doctor[] D=new Doctor[10000];
 		while(true)//this is to inform you that 
 		{
-		System.out.println("1.AdminLogin\n 2.DoctorLogin.\n3.PatientLogin \n4.Patient-SignUp\n5.Doctor-SignUp");		
+		System.out.println("1.AdminLogin\n 2.PatientLogin.\n3.DoctorLogin \n4.Patient-SignUp");		
 		int choice = sc.nextInt();
 		switch (choice)
 		{
@@ -33,7 +33,7 @@ public class Main
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.viewDoctors\n2.viewPatients.\n3.addDoctor\n4.removePatient\n5.RemoveDoctor\n6.viewAppointments\n7.viewPaymentDetils\n8.updateDoctorsdetails\n9.UpdatePatientDetails");
+		    			System.out.println("1.viewDoctors\n2.viewPatients.\n3.addDoctor\n4.RemoveDoctor\n5.viewAppointments\n.6Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -63,10 +63,7 @@ public class Main
 		    				}
 		    				case 5:
 		    				{
-		    					System.out.println("Enter Patient_ID!!");
-		    					int id=sc.nextInt();
-		    					a.RemovePatient(id);
-		    					break;
+		    					a.viewAppointment();
 		    				}
 		    				case 6:
 		    				{
@@ -92,7 +89,7 @@ public class Main
 		    	try {
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeUpdate("Select * from where ");
+					st.executeQuery("Select * from Users where userID=id && userType='Patient' && Password=pd");
 					flag=1;
 				}catch(Exception e){
 					System.out.println("Not Registerd"+e.getMessage());
@@ -101,7 +98,7 @@ public class Main
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.ViewProfile\n2.viewDoctors.\n3.BookAppointments\n4.CancelAppointment\n5.PayBill\n6.ViewReport\n7.viewAppointments\n.ChangePassword\n.Logout");
+		    			System.out.println("1.ViewProfile\n2.viewDoctors.\n3.BookAppointments\n4.CancelAppointment\n6.ViewReport\n7.viewAppointments\n.ChangePassword\n.Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -121,11 +118,23 @@ public class Main
 		    				}
 		    				case 4:
 		    				{
-		    					
+		    					P[id].CancelAppointments();
 		    				}
 		    				case 5:
 		    				{
-		    					
+		    					P[id].ViewReport();
+		    				}
+		    				case 6:
+		    				{
+		    					P[id].viewAppointment();
+		    				}
+		    				case 7:
+		    				{
+		    					P[id].ChangePassword();
+		    				}
+		    				case 8:
+		    				{
+		    					break;
 		    				}
 		    			}
 		    		}
@@ -145,19 +154,19 @@ public class Main
 		    	try {
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeUpdate("");
+					st.executeQuery("Select * from Users where userID=id && userType='Patient' && Password=pd");
 					flag=1;
 				}catch(Exception e){
-					System.out.println("Not Registerd");
+					System.out.println("Not Registered");
 				}
-		    	finally {
-		    		System.out.println(" Succesfully Logged In !! ");
-		    	}
+//		    	finally {
+//		    		System.out.println(" Succesfully Logged In !! ");
+//		    	}
 		    	if(flag==1)
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.viewProfile\n2.viewAppointments.\n3.cancelAppointments\n4Logout");
+		    			System.out.println("1.viewProfile\n2.viewAppointments.\n3.cancelAppointments\n4.DiagonistPatient\n5.Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -167,7 +176,19 @@ public class Main
 		    				}
 		    				case 2:
 		    				{
-		    					
+		    					D[id].viewAppointment(id);
+		    				}
+		    				case 3:
+		    				{
+		    					D[id].CancelAppointment(id);
+		    				}
+		    				case 4:
+		    				{
+		    					D[id].DiagonistPatient(id);
+		    				}
+		    				case 5:
+		    				{
+		    					break;
 		    				}
 		    			}
 		    		}
@@ -186,7 +207,7 @@ public class Main
 		    }
 		    case 5:
 		    {
-		    	
+		    	break;
 		    }
 		}
 		}

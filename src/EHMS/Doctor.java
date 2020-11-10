@@ -77,14 +77,52 @@ public class Doctor extends Person
     		
     	}
 	}
-	public void viewAppointment()
+	public void viewAppointment(int docid)
 	{
+		try
+		{
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("Select * from Appointments where DoctorID=docid");
+			rs.next();
+			while(rs.next())
+			{
+				
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+//	public void CancelAppointment(int id)
+//	{
+//		System.out.println("Enter AppointmentID which you want to cancel!!!");
+//		int appid=sc.nextInt();
+//		try
+//		{
+//			Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//			st.executeUpdate("");
+//		}catch(Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+//	}
+	public void DiagonistPatient(int id)
+	{
+		System.out.println("Enter the Appointment_Id");
+		int appid=sc.nextInt();
+		try
+		{
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			st.executeQuery("");
+			Report rp=new Report();
+			rp.DiagonistReport();
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 		
 	}
-//	public void CancelAppointmet()
-//	{
-//		
-//	}
 	public void viewPatient()
 	{
 		try 
@@ -117,14 +155,9 @@ public class Doctor extends Person
 		{ System.out.println(e);}  
 		
     }
-	public void DiagonisReport() {}
-	public void DoctorConfirmation() {}
-	public void ViewShedule_appointments() 
-	{
-		
-	}
-	public void voidGenerateReport() {}
-	
-	
-	
+//	//public void DoctorConfirmation() {}
+//	public void ViewShedule_appointments() 
+//	{
+//		
+//	}		
 }

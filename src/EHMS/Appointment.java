@@ -10,6 +10,7 @@ public class Appointment
 	private String Problem;
 	String Doctor_Name;
 	String Doctor_Type;
+	String AppStatus="Pending";
 	static
 	{
 		temp=1;
@@ -21,14 +22,27 @@ public class Appointment
 	}
 	public void BookAppointment(int id)
 	{
+		Apid=generateAppno();
+		System.out.println("Appointment ID:"+Apid);
 		pid=id;
-		System.out.println("Enter your Disease:");
+		System.out.println("Patient ID:"+pid);
+		System.out.println("Enter your Problem:");
 		Problem=sc.next();
 //		Doctor_Name=AssignDoctor();	
+		System.out.println("DoctorName:"+Doctor_Name);
+		int d;
+		System.out.println("Enter 1 to confirm");
+		d=sc.nextInt();
+		if(d==1)
+		{
+			ConfirmAppointment();
+		}
+		
+		
 	}
 //	String AssignDoctor()
 //	{
-//		System.out.println("Doctor Type!!");
+//		System.out.println("Choose Doctor Type According to yout problem!!");
 //		System.out.println("1.Eyes\n 2.EAR.\n3.Heart\n4.Bone\n5.Lungs\n6.Kidney\n.7General_Phsysicist");
 //		int ch=sc.nextInt();
 //		switch(ch)
@@ -36,6 +50,7 @@ public class Appointment
 //			case 1:
 //			{
 //				Doctor_Type="Eyes";
+//				
 //			}
 //			case 2:
 //			{
@@ -65,16 +80,16 @@ public class Appointment
 //	}
 	public void Appointment_Status() 
 	{
-		
+		try {
+			
+		}catch() {
+			
+		}
 	}
 	
 	public void ConfirmAppointment()//Add all details into appointment database
 	{
-		int d;
-		System.out.println("Enter 1 to confirm");
-		d=sc.nextInt();
-		if(d==1)
-		{
+		
 //			System.out.println("Appointment conirmed");
 //			try
 //			{
@@ -84,11 +99,7 @@ public class Appointment
 //			{
 //				
 //			}
-		}
-		else
-		{
-			
-		}
+		
 	}
 }
       
