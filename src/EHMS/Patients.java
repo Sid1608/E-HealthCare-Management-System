@@ -6,34 +6,43 @@ import java.sql.*;
 import java.util.Scanner;
 public class Patients extends Person
 {
-	private int PatientID;
+	//private int PatientID;
 	Scanner sc=new Scanner(System.in);
     String BloodGroup ;
-    private void generatePatientID()
+    private static int temp;
+    static
+    {
+    	temp=0;
+    }
+    private static int generatePatientID()
+    {
+    	return ++temp;
+    }
+//    private void generatePatientID()
+//	{
+//		
+//		try
+//		{
+//			Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//		
+//			ResultSet rs=st.executeQuery("Select MAX(UserID) from Users where userType='Patient'");
+//			rs.next();
+//			rs.getInt("MAX(UserID)");
+////			if(rs.getInt("MAX(UserID)"))
+////				return 1;
+////			else
+////				return id+1;
+//				
+//			
+//		}catch(Exception e)
+//		{
+//			
+//		}
+//	}
+    public int addPatient() 
 	{
-		
-		try
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-		
-			ResultSet rs=st.executeQuery("Select MAX(UserID) from Users where userType is Patient");
-			rs.next();
-			rs.getInt("MAX(UserID)");
-//			if(rs.getInt("MAX(UserID)"))
-//				return 1;
-//			else
-//				return id+1;
-				
-			
-		}catch(Exception e)
-		{
-			
-		}
-	}
-    public void addPatient() 
-	{
-		PatientID=generatePatientID();
+		int PatientID=generatePatientID();
 		String password;
 		String cpd;
 		System.out.println("Patient ID:"+PatientID);
@@ -54,7 +63,7 @@ public class Patients extends Person
 		}catch(Exception e){
 			System.out.println("Please enter data in correct format!!");
 		}
-		//return PatientID;
+		return PatientID;
 		
 	}
     public void PatientRegistration(int pid) 
@@ -64,7 +73,7 @@ public class Patients extends Person
     	System.out.println("BloodGroup:");
     	BloodGroup=sc.next();
     	Register reg=new Register();
-    	reg.patient_Registration(pid,First_Name,Last_Name,Gender,CN,age,Email_Address,BloodGroup);
+    	reg.patient_Registration(pid,First_Name,Last_Name,Gender,CN,age,Email_Address,BloodGroup,Address);
  
     }
     public void ShowPatientDetails(int id)
@@ -99,9 +108,10 @@ public class Patients extends Person
 		{ System.out.println(e);}  
 		
     }
-    public void BookAppointment() 
+    public void BookAppointment(int id) 
     {
     	Appointment ap=new Appointment();
+    	
     	
     	
     	
@@ -125,7 +135,7 @@ public class Patients extends Person
     	
     }
     public void billpayment() {}
-    public void Givefeedback() {}//feedback form banega
+    public void Givefeedback() {}
    
     
     
