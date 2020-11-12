@@ -89,6 +89,8 @@ public class Appointment
 	
 	public void ConfirmAppointment()//Add all details into appointment database
 	{
+		Payment p=new Payment();
+		String Status=p.CreditCardDetails();
 		
 //			System.out.println("Appointment conirmed");
 //			try
@@ -99,7 +101,6 @@ public class Appointment
 //			{
 //				
 //			}
-		
 	}
 }
       
