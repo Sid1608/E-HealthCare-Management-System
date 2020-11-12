@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 public class Admin extends Person
 {
-	
+
 	Scanner sc =new Scanner(System.in);
 //	private  int docid;
 //	private static int temp;
@@ -18,7 +18,7 @@ public class Admin extends Person
 //	}
 	private int AutoDoctorID()
 	{
-		
+
 		try{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
@@ -32,7 +32,7 @@ public class Admin extends Person
 			else
 			{
 				return (int)(rs.getInt("NextUserID"))+1;
-			}	
+			}
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
@@ -66,7 +66,7 @@ public class Admin extends Person
 	public void viewDoctors()
 	{
 		System.out.println("Enter 1 to view all Doctors 2 to view Doctor by id");
-		try 
+		try
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
@@ -79,13 +79,13 @@ public class Admin extends Person
 			con.close();
 		}
 		catch(Exception e)
-		{ System.out.println(e);}  
-		
+		{ System.out.println(e);}
+
 
 	}
 	public void viewPatients()
 	{
-		try 
+		try
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
@@ -97,11 +97,11 @@ public class Admin extends Person
 			}
 		}
 		catch(Exception e)
-		{ System.out.println(e);}  
+		{ System.out.println(e);}
 	}
-	public void RemoveDoctor(int id) 
+	public void RemoveDoctor(int id)
 	{
-		try 
+		try
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
@@ -109,22 +109,22 @@ public class Admin extends Person
 			System.out.println("Removed Succesfully");
 		}
 		catch(Exception e)
-		{ System.out.println(e);}  
+		{ System.out.println(e);}
 	}
 	public void viewPatientReport() {}//admin can view all the patient reports
 	//public void GenerateDoctorSalary() {}
 	public void ViewFeedback() //admin can view all the feedback
 	{
-		
+
 	}
-//	public void viewAppointment() 
+//	public void viewAppointment()
 //	{
 //		try {
 //			Connection con=ConnectionProvider.getCon();
 //			Statement st=con.createStatement();
 //		}catch(Exception e)
 //		{
-//			
+//
 //		}
 //	}//admin can view all the appointment
 //	public void GenerateBill() {}

@@ -136,6 +136,18 @@ public class Main
 		    				{
 		    					break;
 		    				}
+		    				case 6:
+		    				{
+		    					
+		    				}
+		    				case 7:
+		    				{
+		    					
+		    				}
+		    				case 8:
+		    				{
+		    					
+		    				}
 		    			}
 		    		}
 		    	}
@@ -159,9 +171,6 @@ public class Main
 				}catch(Exception e){
 					System.out.println("Not Registered");
 				}
-//		    	finally {
-//		    		System.out.println(" Succesfully Logged In !! ");
-//		    	}
 		    	if(flag==1)
 		    	{
 		    		while(true)
@@ -176,6 +185,7 @@ public class Main
 		    				}
 		    				case 2:
 		    				{
+
 		    					D[id].viewAppointment(id);
 		    				}
 		    				case 3:
@@ -189,6 +199,7 @@ public class Main
 		    				case 5:
 		    				{
 		    					break;
+
 		    				}
 		    			}
 		    		}
@@ -202,12 +213,16 @@ public class Main
 		    	int pid=p.addPatient();
 		    	System.out.println("Fill the following details");
 		    	p.PatientRegistration(pid);
-		    	
 		    	break;
 		    }
 		    case 5:
 		    {
+
 		    	break;
+		    }
+		    case 5:
+		    {
+		    	
 		    }
 		}
 		}

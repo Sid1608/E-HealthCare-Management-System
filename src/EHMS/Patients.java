@@ -9,6 +9,7 @@ public class Patients extends Person
 	//private int PatientID;
 	Scanner sc=new Scanner(System.in);
     String BloodGroup ;
+<<<<<<< HEAD
 //    private static int temp;
 //    static
 //    {
@@ -114,6 +115,7 @@ public class Patients extends Person
     {
     	Appointment ap=new Appointment();
     	ap.BookAppointment(id);
+    	
     	
     	
     	

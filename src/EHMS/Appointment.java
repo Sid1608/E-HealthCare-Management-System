@@ -21,6 +21,7 @@ public class Appointment
 		return ++temp;
 	}
 	public void BookAppointment(int id)
+
 	{
 		Apid=generateAppno();
 		System.out.println("Appointment ID:"+Apid);
@@ -40,6 +41,7 @@ public class Appointment
 		
 		
 	}
+
 //	String AssignDoctor()
 //	{
 //		System.out.println("Choose Doctor Type According to yout problem!!");
@@ -101,6 +103,7 @@ public class Appointment
 //			{
 //				
 //			}
+
 	}
 }
       
