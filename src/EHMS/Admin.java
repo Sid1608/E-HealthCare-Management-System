@@ -6,37 +6,24 @@ public class Admin extends Person
 {
 
 	Scanner sc =new Scanner(System.in);
-//	private  int docid;
-//	private static int temp;
-//	static
-//	{
-//		temp=1;
-//	}
-//	private static int generateDoctorID()
-//	{
-//		return ++temp;
-//	}
 	private int AutoDoctorID()
 	{
-
+		int docid=0;
 		try{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
 			ResultSet rs=st.executeQuery("Select MAX(UserID) as NextUserID from Users where userType='Doctor'");
 			rs.next();
-			rs.getInt("NextUserID");
-			if(rs.getInt("NextUserID")==0)
+			rs.getInt(1);
+			if(rs.wasNull())
 			{
 				return 1;
-			}
-			else
-			{
-				return (int)(rs.getInt("NextUserID"))+1;
 			}
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
+		return docid+1;
 	}
 	public int addDoctor()
 	{
@@ -117,16 +104,20 @@ public class Admin extends Person
 	{
 
 	}
-//	public void viewAppointment()
-//	{
-//		try {
-//			Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//		}catch(Exception e)
-//		{
-//
-//		}
-//	}//admin can view all the appointment
+	public void viewAppointment()
+	{
+		try {
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+		}catch(Exception e)
+		{
+
+		}
+	}//admin can view all the appointment
+	public void ViewFeedback()
+	{
+		
+	}
 //	public void GenerateBill() {}
 //	public void ViewPaymentDetails() {}//admin can view all the paid bills list
 

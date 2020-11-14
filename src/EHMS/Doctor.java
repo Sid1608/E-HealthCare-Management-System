@@ -30,31 +30,35 @@ public class Doctor extends Person
 			case 1:
 			{
 				Doctor_Type="Eyes";
+				break;
 			}
 			case 2:
 			{
 				Doctor_Type="Ear";
+				break;
 			}
 			case 3:
 			{
-				Doctor_Type="Heart";
+				Doctor_Type="Heart/Lungs";
+				break;
 			}
 			case 4:
 			{
 				Doctor_Type="Bone";
+				break;
 			}
 			case 5:
 			{
-				Doctor_Type="Lungs";
+				Doctor_Type="Kidney";
+				break;
 			}
 			case 6:
 			{
-				Doctor_Type="Kidney";
-			}
-			case 7:
-			{
 				Doctor_Type="General Physicist";
+				break;
 			}
+			default:
+				
 		}
 		Register reg=new Register();
     	reg.doctor_Registration(docid,First_Name,Last_Name,Gender,CN,age,Entry_Charge,Qualification,Doctor_Type,Email_Address);//change the database
@@ -93,28 +97,15 @@ public class Doctor extends Person
 			System.out.println(e.getMessage());
 		}
 	}
-//	public void CancelAppointment(int id)
-//	{
-//		System.out.println("Enter AppointmentID which you want to cancel!!!");
-//		int appid=sc.nextInt();
-//		try
-//		{
-//			Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//			st.executeUpdate("");
-//		}catch(Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//	}
 	public void DiagonistPatient(int id)
 	{
-		System.out.println("Enter the Appointment_Id");
+		System.out.println("Enter the Appointment_Id of the patient which you want to check!!");
 		int appid=sc.nextInt();
 		try
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeQuery("");
+			st.executeQuery("Select * from Appointment where AppointmentID=appid");
 			Report rp=new Report();
 			rp.DiagonistReport();
 		}catch(Exception e)
@@ -132,7 +123,7 @@ public class Doctor extends Person
 			ResultSet rs=st.executeQuery("select * from Patients");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4));
 			}
 		}
 		catch(Exception e)
@@ -155,9 +146,5 @@ public class Doctor extends Person
 		{ System.out.println(e);}  
 		
     }
-//	//public void DoctorConfirmation() {}
-//	public void ViewShedule_appointments() 
-//	{
-//		
-//	}		
+
 }

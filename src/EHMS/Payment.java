@@ -6,30 +6,33 @@ import java.util.Scanner;
 public class Payment 
 {
 	Scanner input=new Scanner(System.in);
-	int pmid;
-	int amount;
-	int pid;
-	int appid;
-	int docid;
+//	int pmid;
+//	int amount;
+//	int pid;
+//	int appid;
+//	int docid;
 	public String CreditCardDetails()
 	{
 		String Status;
 		String cardHolderName=input.next();
 		int card_no=input.nextInt();
-		Date ExpiryDate=input.nextString();
+		String ExpiryDate=input.toString();
 		int cvc=input.nextInt();
-		System.out.println("Enter 1 to confirm Payment!!!")
-		int x=sc.nextInt();
+		System.out.println("Enter 1 to confirm Payment!!!");
+		int x=input.nextInt();
 		if(x==1)
-			Status=ConfirmPayment();
+		{
+			System.out.println("Your Payment is confirmed");
+			return "Payed";
+//			Status=ConfirmPayment();
+//			return Status;
+		}
 		else
+		{
 			System.out.println("Your Appointment is cancelled");
+			return "Cancelled";
+		}
 		
 		
-	}
-	public String ConfirmPayment()
-	{
-		System.out.println("Your Payment is confirmed");
-		return "Payed";
 	}
 }

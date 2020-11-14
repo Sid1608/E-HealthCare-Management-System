@@ -9,7 +9,6 @@ public class Patients extends Person
 	//private int PatientID;
 	Scanner sc=new Scanner(System.in);
     String BloodGroup ;
-<<<<<<< HEAD
 //    private static int temp;
 //    static
 //    {
@@ -21,25 +20,22 @@ public class Patients extends Person
 //    }
     private int AutoPatientID()
 	{
-		
+		int id_Patient=0;
 		try{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
 			ResultSet rs=st.executeQuery("Select MAX(UserID) as NextUserID from Users where userType='Patient'");
 			rs.next();
-			rs.getInt("NextUserID");
-			if(rs.getInt("NextUserID")==0)
+			rs.getInt(1);
+			if(rs.wasNull())
 			{
 				return 1;
 			}
-			else
-			{
-				return (int)(rs.getInt("NextUserID"))+1;
-			}	
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
+		return id_Patient+1;
 	}
     
     

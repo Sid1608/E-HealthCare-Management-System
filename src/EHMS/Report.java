@@ -16,9 +16,24 @@ public class Report
 	String DoctorsComment;
 	int BillAmount;
 	String status="Payed";
-	private int GenerateReportID()
+	private int AutoReportID()
 	{
-		
+		int repID=0;
+		try{
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("Select MAX(ReportId) as NextUserID from Reports");
+			rs.next();
+			rs.getInt(1);
+			if(rs.wasNull())
+			{
+				return 1;
+			}
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		return repID;
 	}
 	public void DiagonistReport(int pid,int appid,int docid,int bill)
 	{
