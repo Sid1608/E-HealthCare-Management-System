@@ -14,8 +14,6 @@ public class Report
 	int docid;
 	String MedicinePrescribed;
 	String DoctorsComment;
-	int BillAmount;
-	String status="Payed";
 	private int AutoReportID()
 	{
 		int repID=0;
@@ -24,7 +22,7 @@ public class Report
 			Statement st=con.createStatement();
 			ResultSet rs=st.executeQuery("Select MAX(ReportId) as NextUserID from Reports");
 			rs.next();
-			rs.getInt(1);
+			repID=rs.getInt(1);
 			if(rs.wasNull())
 			{
 				return 1;
@@ -33,14 +31,13 @@ public class Report
 		{
 			System.out.println(e.getMessage());
 		}
-		return repID;
+		return repID+1;
 	}
-	public void DiagonistReport(int pid,int appid,int docid,int bill)
+	public void DiagonistReport(int pid,int appid,int docid)
 	{
 		this.pid=pid;
 		this.appid=appid;
 		this.docid=docid;
-		this.BillAmount=bill;
 		System.out.println("Prescribed medicine to patient:");
 		MedicinePrescribed=input.next();
 		System.out.println("Additional Information::");
@@ -53,12 +50,12 @@ public class Report
 		}
 		
 	}
-	public void GenerateReport()
+	public void GenerateReport()//yash
 	{
 		try {
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			//ResultSet rs=st.executeUpdate("");
+			//ResultSet rs=st.executeUpdate("");//     Yash//
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());

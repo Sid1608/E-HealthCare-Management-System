@@ -41,18 +41,4 @@ public class Person
     	Address=sc.next();
     	//sc.close();
 	}
-	//void ShowUserDetails()
-	//{
-	//	System.out.println("PatientID:"+PatientID);
-		//System.out.println("Name:"+First_Name+" "+Last_Name);
-		//System.out.println("Gender"+Gender);
-		//System.out.println("Mobile No:"+CN);
-		//System.out.println("EmailId:"+Email_Address);
-		//System.out.println("DOB:"+DOB);
-		//System.out.println("Age:"+age);
-		//System.out.println("Address:"+Address);
-	//}
-	
-	
-	
 }

@@ -14,7 +14,8 @@ public class Admin extends Person
 			Statement st=con.createStatement();
 			ResultSet rs=st.executeQuery("Select MAX(UserID) as NextUserID from Users where userType='Doctor'");
 			rs.next();
-			rs.getInt(1);
+//			rs.getInt(1);
+			docid = rs.getInt(1);
 			if(rs.wasNull())
 			{
 				return 1;
@@ -60,10 +61,8 @@ public class Admin extends Person
 			ResultSet rs=st.executeQuery("select * from Doctors");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash isko bharde table ko dekhkar
 			}
-			st.close();
-			con.close();
 		}
 		catch(Exception e)
 		{ System.out.println(e);}
@@ -80,7 +79,7 @@ public class Admin extends Person
 			ResultSet rs=st.executeQuery(query);
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//Yash
 			}
 		}
 		catch(Exception e)
@@ -92,7 +91,7 @@ public class Admin extends Person
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeUpdate("");
+			st.executeUpdate("");//    yash 
 			System.out.println("Removed Succesfully");
 		}
 		catch(Exception e)
@@ -102,7 +101,10 @@ public class Admin extends Person
 	{
 		try
 		{
-			
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			st.execute("");//yash 
+			System.out.println("Removed Succesfully");
 		}
 		catch(Exception e)
 		{
@@ -111,7 +113,7 @@ public class Admin extends Person
 	}
 	public void ViewFeedback() //admin can view all the feedback
 	{
-		try {
+		try {   //yash
 			
 		}catch(Exception e)
 		{
@@ -120,9 +122,16 @@ public class Admin extends Person
 	}
 	public void viewAppointment()
 	{
-		try {
+		try 
+		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("select * from Doctors");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash isko bharde table ko dekhkar
+			}
+			
 		}catch(Exception e)
 		{
 

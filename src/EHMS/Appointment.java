@@ -13,7 +13,7 @@ public class Appointment
 	String Doctor_Name;
 	String Doctor_Type;
 	int docFees;
-	String AppStatus="Pending";
+	String Appointment_Status="Pending";
 	String payment_status;
 	Scanner sc=new Scanner(System.in);
 	private int AutoAppointmentID()
@@ -44,10 +44,10 @@ public class Appointment
 		System.out.println("Patient ID:"+pid);
 		System.out.println("Enter your Problem:");
 		Problem=sc.next();
-		/*Doctor_Name=*/ChooseDoctor();	
+		int docid=ChooseDoctor();	
+		Doctor_Name=GetDoctorName(docid);
+		docFees=GetDoctorFees(docid);
 		System.out.println("DoctorName:"+Doctor_Name);
-		//docFees=fun();
-//		payment_status=billpayment(docFees);
 		int d;
 		System.out.println("Enter 1 to confirm");
 		d=sc.nextInt();
@@ -55,11 +55,15 @@ public class Appointment
 		{
 			ConfirmAppointment();
 		}
+		else 
+		{
+			System.out.println("Your appointmenet cancelled");
+		}
 		
 		
 	}
 
-	void ChooseDoctor()
+	int ChooseDoctor()
 	{
 		System.out.println("Choose Doctor Type According to yout problem!!");
 		System.out.println("1.Eyes\n 2.EAR.\n3.Heart\n4.Bone\n5.Lungs\n6.Kidney\n.7General_Phsysicist");
@@ -79,9 +83,8 @@ public class Appointment
 						System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getInt(8)+"  "+rs.getString(9)+"  "+rs.getString(10)+"  "+rs.getString(11)+"  "+rs.getString(12));
 					}
 					System.out.println("Enter the doc id which you want to choose!!!!");
-					ResultSet Rs=st.executeQuery("");
-					Rs.next();
-					System.out.println();
+					int did=sc.nextInt();
+					return did;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -98,6 +101,9 @@ public class Appointment
 					{
 						System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getInt(8)+"  "+rs.getString(9)+"  "+rs.getString(10)+"  "+rs.getString(11)+"  "+rs.getString(12));
 					}
+					System.out.println("Enter the doc id which you want to choose!!!!");
+					int did=sc.nextInt();
+					return did;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -114,6 +120,9 @@ public class Appointment
 					{
 						System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getInt(8)+"  "+rs.getString(9)+"  "+rs.getString(10)+"  "+rs.getString(11)+"  "+rs.getString(12));
 					}
+					System.out.println("Enter the doc id which you want to choose!!!!");
+					int did=sc.nextInt();
+					return did;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -130,6 +139,9 @@ public class Appointment
 					{
 						System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getInt(8)+"  "+rs.getString(9)+"  "+rs.getString(10)+"  "+rs.getString(11)+"  "+rs.getString(12));
 					}
+					System.out.println("Enter the doc id which you want to choose!!!!");
+					int did=sc.nextInt();
+					return did;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -146,6 +158,9 @@ public class Appointment
 					{
 						System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getInt(8)+"  "+rs.getString(9)+"  "+rs.getString(10)+"  "+rs.getString(11)+"  "+rs.getString(12));
 					}
+					System.out.println("Enter the doc id which you want to choose!!!!");
+					int did=sc.nextInt();
+					return did;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -162,6 +177,9 @@ public class Appointment
 					{
 						System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getInt(8)+"  "+rs.getString(9)+"  "+rs.getString(10)+"  "+rs.getString(11)+"  "+rs.getString(12));
 					}
+					System.out.println("Enter the doc id which you want to choose!!!!");
+					int did=sc.nextInt();
+					return did;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -178,11 +196,22 @@ public class Appointment
 					{
 						System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getInt(8)+"  "+rs.getString(9)+"  "+rs.getString(10)+"  "+rs.getString(11)+"  "+rs.getString(12));
 					}
+					System.out.println("Enter the doc id which you want to choose!!!!");
+					int did=sc.nextInt();
+					return did;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
 			}
 		}
+	}
+	String GetDoctorName(int docID)//yash
+	{
+		///yaha table banakar doctor ka naam return karwade
+	}
+	int GetDoctorFees(int docID)//yash
+	{
+		//yaha fees retrun karw dena
 	}
 	public String billpayment(int fee)
     {
@@ -192,29 +221,22 @@ public class Appointment
     	String status=p.CreditCardDetails(fee);
     	return status;
     }
-	public void ConfirmAppointment()//Add all details into appointment database
+	public void ConfirmAppointment()//Add all details into appointment database//yash
 	{
 			payment_status=billpayment(docFees);
-			if(payment_status=="payed")
+	//	yeh sab table main dal dena ,doctor vo hi appointment lega jisme PAYment status=payed hoga
+			System.out.println("Appointment confirmed");
+			try
 			{
-		
-				System.out.println("Appointment confirmed");
-				try
-				{
-					Connection con=ConnectionProvider.getCon();
-					Statement st=con.createStatement();
-					st.executeUpdate("insert int o");
-					
-	
-				}
-				catch(Exception e)
-				{
-					System.out.println("");
-				}
+				Connection con=ConnectionProvider.getCon();
+				Statement st=con.createStatement();
+				st.executeUpdate("insert int o");
+				
+
 			}
-			else
+			catch(Exception e)
 			{
-				System.out.println("Your Appointment is cancelled!!!!");
+				System.out.println("");
 			}
 
 	}

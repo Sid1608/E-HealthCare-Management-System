@@ -8,6 +8,7 @@ create table Users(
 	Password varchar(100),
 	primary key(userID,userType)
 );
+select * from Users;
 create table Patients(
 	PatientID int not null,
 	First_Name varchar(30), 
@@ -46,7 +47,7 @@ create table Appointments
     Qualification varchar(20),
     DoctorFees int,
     PaymentStatus varchar(33),
-    Status varchar(30)
+    Appointment_Status varchar(30)
 );
 
 select * from Users;
@@ -58,18 +59,15 @@ create table Reports
     DoctorID int,
     MedicinePrescribed varchar(200),
     DoctorComment varchar(200),
-    billAmount int,
-    status varchar(20),
+   # billAmount int,//nahi hain
+    #status varchar(20),//yeh nahi hain
     primary key (ReportID)
 );
 create table feedback
 (
-	feedbackID int not null,
-	UsersName varchar(20),
-    Services varchar(20),
+	PatientID int,
     points int,
     Doc_Nature varchar(20),
-    Location varchar(30),
-    Feedback varchar(100)
+    PatientComment varchar(100)
 );
     

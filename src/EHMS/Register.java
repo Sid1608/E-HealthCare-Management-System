@@ -27,7 +27,7 @@ public class Register
 		try 
 		{
 			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
+			Statement st=con.createStatement();//yash isme jo error aa rahi hain vo hata dena
 			st.executeUpdate("INSERT INTO Doctors VALUES ('"+docid+"'"+fn+"','"+ln+"','"+G+"','"+cn+"','"+age+"','"+ec+"','"+Q+"','"+dt+"','"+ed+"')");
 			System.out.println("Doctor Added Successully");
 		}

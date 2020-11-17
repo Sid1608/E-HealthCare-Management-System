@@ -94,7 +94,7 @@ public class Main
 		    	try {
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeQuery("Select * from Users where userID=id && userType='Patient' && Password=pd");
+					st.executeQuery("Select * from Users where userID=id && userType='Patient' && Password=pd");//yash 
 					flag=1;
 				}catch(Exception e){
 					System.out.println("Not Registerd"+e.getMessage());
@@ -103,7 +103,7 @@ public class Main
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.ViewProfile\n2.viewDoctors.\n3.BookAppointments\n4.CancelAppointment\n6.ViewReport\n7.viewAppointments\n.ChangePassword\n.Logout");
+		    			System.out.println("1.ViewProfile\n2.viewDoctors.\n3.BookAppointments\n4ViewReport\n7.viewAppointments\n.ChangePassword\nviewFeedback\n.Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -123,23 +123,23 @@ public class Main
 		    				}
 		    				case 4:
 		    				{
-		    					P[id].CancelAppointments();
+		    					P[id].ViewReport();
 		    				}
 		    				case 5:
 		    				{
-		    					P[id].ViewReport();
+		    					P[id].viewAppointment();
 		    				}
 		    				case 6:
 		    				{
-		    					P[id].viewAppointment();
+		    					P[id].ChangePassword();//yash
 		    				}
 		    				case 7:
 		    				{
-		    					P[id].ChangePassword();
+		    					P[id].Givefeedback(id);
 		    				}
 		    				case 8:
 		    				{
-		    					break;
+		    					//break;yash -logout
 		    				}
 		    			}
 		    		}
@@ -168,7 +168,7 @@ public class Main
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.viewProfile\n2.viewAppointments.\n3.cancelAppointments\n4.DiagonistPatient\n5.Logout");
+		    			System.out.println("1.viewProfile\n2.viewAppointments.\n4.DiagonistPatient\n5.Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -183,13 +183,9 @@ public class Main
 		    				}
 		    				case 3:
 		    				{
-		    					D[id].CancelAppointment(id);
-		    				}
-		    				case 4:
-		    				{
 		    					D[id].DiagonistPatient(id);
 		    				}
-		    				case 5:
+		    				case 4:
 		    				{
 		    					break;
 
@@ -208,7 +204,7 @@ public class Main
 		    	p.PatientRegistration(pid);
 		    	break;
 		    }
-		    case 5:
+		    default:
 		    {
 
 		    	break;

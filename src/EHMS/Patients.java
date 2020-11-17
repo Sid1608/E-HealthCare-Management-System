@@ -14,9 +14,9 @@ public class Patients extends Person
 		try{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			ResultSet rs=st.executeQuery("Select MAX(UserID) as NextUserID from Users where userType='Patient'");
+			ResultSet rs=st.executeQuery("Select MAX(userID) as 'MaximumID' from Users");
 			rs.next();
-			rs.getInt(1);
+			id_Patient= rs.getInt(1);
 			if(rs.wasNull())
 			{
 				return 1;
@@ -73,7 +73,7 @@ public class Patients extends Person
     		ResultSet rs=st.executeQuery("Select * from Patients where pid=id");
     		while(rs.next())
     		{
-    			
+    			//yash
     		}
     	}
     	catch(Exception e)
@@ -90,7 +90,7 @@ public class Patients extends Person
 			ResultSet rs=st.executeQuery("select * from Doctors");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash
 			}
 		}
 		catch(Exception e)
@@ -112,7 +112,7 @@ public class Patients extends Person
 			ResultSet rs=st.executeQuery("select * from Doctors");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash
 			}
     	}
     	catch(Exception e) {
@@ -127,16 +127,33 @@ public class Patients extends Person
 			ResultSet rs=st.executeQuery("select * from Doctors");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash table ko dekhkar dalde
 			}
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}
     }
-    public void Givefeedback() 
+    public void Givefeedback(int id) 
     {
     	System.out.println("Give feedback");
+    	//String UsersName=;
+    	int pid=id;
+        System.out.println("Give points to our services out of 10");
+        int points=sc.nextInt();
+        String Doc_Nature =sc.next();
+        String YourComment= sc.next();
+        try {
+        	
+        }
+        catch(Exception e)//isko bas table main dalna hain-yash
+        {
+        	
+        }
     	
+    }
+    public void ChangePassword()
+    {
+    	//user table main password change karna  - yash
     }
    
     
