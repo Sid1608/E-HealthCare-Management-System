@@ -21,7 +21,7 @@ create table Patients(
 	primary key(PatientID)
 );
 select * from Patients;
-drop table Doctors;
+#drop table Doctors;
 create table Doctors(
 	DoctorID int not null,
 	First_Name varchar(30), 
@@ -29,9 +29,9 @@ create table Doctors(
     Gender varchar(10),
     ContactNumber varchar(11),
     Age int ,
-    Entry_Charge int,
-    Qualification varchar(50),
-    Doctor_Type varchar(50),
+    Entry_Charge int,#
+    Qualification varchar(50),#Mbbs etc
+    Doctor_Type varchar(50),#"1.Eyes\n 2.EAR.\n3.Heart\n4.Bone\n5.Lungs\n6.Kidney\n7.General_Physicist"
     Email_Id varchar(20),
     primary key(DoctorID)
 );
@@ -45,6 +45,7 @@ create table Appointments
     DoctorType varchar(20),
     Qualification varchar(20),
     DoctorFees int,
+    PaymentStatus varchar(33),
     Status varchar(30)
 );
 
@@ -69,7 +70,6 @@ create table feedback
     points int,
     Doc_Nature varchar(20),
     Location varchar(30),
-    Feedback varchar(100),
-    reg_date Date
+    Feedback varchar(100)
 );
     

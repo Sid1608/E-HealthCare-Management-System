@@ -6,14 +6,10 @@ import java.util.Scanner;
 public class Payment 
 {
 	Scanner input=new Scanner(System.in);
-//	int pmid;
-//	int amount;
-//	int pid;
-//	int appid;
-//	int docid;
-	public String CreditCardDetails()
+	public String CreditCardDetails(int fee)
 	{
 		String Status;
+		System.out.println("Enter Amount:"+fee);
 		String cardHolderName=input.next();
 		int card_no=input.nextInt();
 		String ExpiryDate=input.toString();
@@ -24,13 +20,11 @@ public class Payment
 		{
 			System.out.println("Your Payment is confirmed");
 			return "Payed";
-//			Status=ConfirmPayment();
-//			return Status;
 		}
 		else
 		{
 			System.out.println("Your Appointment is cancelled");
-			return "Cancelled";
+			return "NotPayed";
 		}
 		
 		

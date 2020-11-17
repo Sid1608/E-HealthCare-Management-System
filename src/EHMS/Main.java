@@ -14,10 +14,10 @@ public class Main
 		Patients p=null;
 		Doctor d=null;
 		Appointment[] pat_app=new Appointment[10000];
-//		Appointment[] doc_app=new Appointment[10000];
-//		Patients[] P=new Patients[10000];
-//		Doctor[] D=new Doctor[10000];
-		while(true)//this is to inform you that 
+		Appointment[] doc_app=new Appointment[10000];
+		Patients[] P=new Patients[10000];
+		Doctor[] D=new Doctor[10000];
+		while(true)
 		{
 		System.out.println("1.AdminLogin\n 2.PatientLogin.\n3.DoctorLogin \n4.Patient-SignUp");		
 		int choice = sc.nextInt();
@@ -30,11 +30,11 @@ public class Main
 		    	String pd;
 		    	System.out.print("USERNAME-->");un=sc.next();
 		    	System.out.print("Password-->");pd=sc.next();
-		    	if((un.compareTo("Siddharth")==0&&pd.compareTo("1234")==0)||(un.compareTo("Yash")==0&&pd.compareTo("1234")==0))
+		    	if((un.compareTo("Siddharth")==0&&pd.compareTo("1234")==0)||(un.compareTo("Yash")==0&&pd.compareTo("1234")==0)||(un.compareTo("Shubham")==0&&pd.compareTo("1234")==0))
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.viewDoctors\n2.viewPatients.\n3.addDoctor\n4.RemoveDoctor\n5viewAppointments\n6ViewFeedback.\n8Logout");
+		    			System.out.println("1.viewDoctors\n2.viewPatients.\n3.addDoctor\n4.RemoveDoctor\n5viewAppointments\n6ViewFeedback.\n7Logout");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -67,6 +67,10 @@ public class Main
 		    					a.viewAppointment();
 		    				}
 		    				case 6:
+		    				{
+		    					a.ViewFeedback();
+		    				}
+		    				case 7:
 		    				{
 		    					break;
 		    				}

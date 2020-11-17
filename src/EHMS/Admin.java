@@ -98,11 +98,25 @@ public class Admin extends Person
 		catch(Exception e)
 		{ System.out.println(e);}
 	}
-	public void viewPatientReport() {}//admin can view all the patient reports
-	//public void GenerateDoctorSalary() {}
+	public void viewPatientReport() 
+	{
+		try
+		{
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
 	public void ViewFeedback() //admin can view all the feedback
 	{
-
+		try {
+			
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 	public void viewAppointment()
 	{
@@ -113,12 +127,6 @@ public class Admin extends Person
 		{
 
 		}
-	}//admin can view all the appointment
-	public void ViewFeedback()
-	{
-		
 	}
-//	public void GenerateBill() {}
-//	public void ViewPaymentDetails() {}//admin can view all the paid bills list
 
 }

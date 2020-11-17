@@ -6,18 +6,8 @@ import java.sql.*;
 import java.util.Scanner;
 public class Patients extends Person
 {
-	//private int PatientID;
 	Scanner sc=new Scanner(System.in);
     String BloodGroup ;
-//    private static int temp;
-//    static
-//    {
-//    	temp=0;
-//    }
-//    private static int generatePatientID()
-//    {
-//    	return ++temp;
-//    }
     private int AutoPatientID()
 	{
 		int id_Patient=0;
@@ -88,7 +78,7 @@ public class Patients extends Person
     	}
     	catch(Exception e)
     	{
-    		
+    		System.out.println(e.getMessage());
     	}
 	}
     public void viewDoctor()
@@ -110,40 +100,42 @@ public class Patients extends Person
     public void BookAppointment(int id) 
     {
     	Appointment ap=new Appointment();
-    	ap.BookAppointment(id);
-    	
-    	
-    	
-    	
+    	ap.BookAppointment(id);  
     	
     }
-    public void billpayment()
-    {
-    	
-    }
+ 
     public void viewAppointment() 
     {
     	try {
-    		
+    		Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("select * from Doctors");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+			}
     	}
     	catch(Exception e) {
-    		
+    		System.out.println(e.getMessage());
     	}
     }
-//    public void GetPatientStatus() 
-//    {
-//    	
-//    }
     public void ViewReport()
     {
     	try {
-    		
+    		Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("select * from Doctors");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+			}
     	}catch(Exception e) {
-    		
+    		System.out.println(e.getMessage());
     	}
     }
     public void Givefeedback() 
     {
+    	System.out.println("Give feedback");
     	
     }
    

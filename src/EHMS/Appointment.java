@@ -12,7 +12,9 @@ public class Appointment
 	private String Problem;
 	String Doctor_Name;
 	String Doctor_Type;
+	int docFees;
 	String AppStatus="Pending";
+	String payment_status;
 	Scanner sc=new Scanner(System.in);
 	private int AutoAppointmentID()
 	{
@@ -44,6 +46,8 @@ public class Appointment
 		Problem=sc.next();
 		/*Doctor_Name=*/ChooseDoctor();	
 		System.out.println("DoctorName:"+Doctor_Name);
+		//docFees=fun();
+//		payment_status=billpayment(docFees);
 		int d;
 		System.out.println("Enter 1 to confirm");
 		d=sc.nextInt();
@@ -77,7 +81,7 @@ public class Appointment
 					System.out.println("Enter the doc id which you want to choose!!!!");
 					ResultSet Rs=st.executeQuery("");
 					Rs.next();
-					System.out.printn();
+					System.out.println();
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -180,32 +184,37 @@ public class Appointment
 			}
 		}
 	}
-//	public void Appointment_Status() 
-//	{
-//		try {
-//			
-//		}catch(Ex) {
-//			
-//		}
-//	}
-	
+	public String billpayment(int fee)
+    {
+    	Payment p=new Payment();
+    	System.out.println("Doctor-Fees:"+fee);
+    	System.out.println("Enter the credit card detaisl!!1");
+    	String status=p.CreditCardDetails(fee);
+    	return status;
+    }
 	public void ConfirmAppointment()//Add all details into appointment database
 	{
-		Payment p=new Payment();
-		String Status=p.CreditCardDetails();
+			payment_status=billpayment(docFees);
+			if(payment_status=="payed")
+			{
 		
-			System.out.println("Appointment confirmed");
-			try
-			{
-				Connection con=ConnectionProvider.getCon();
-				Statement st=con.createStatement();
-				st.executeUpdate("insert int o");
-				
-
+				System.out.println("Appointment confirmed");
+				try
+				{
+					Connection con=ConnectionProvider.getCon();
+					Statement st=con.createStatement();
+					st.executeUpdate("insert int o");
+					
+	
+				}
+				catch(Exception e)
+				{
+					System.out.println("");
+				}
 			}
-			catch(Exception e)
+			else
 			{
-				
+				System.out.println("Your Appointment is cancelled!!!!");
 			}
 
 	}
