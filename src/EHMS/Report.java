@@ -14,7 +14,8 @@ public class Report
 	int docid;
 	String MedicinePrescribed;
 	String DoctorsComment;
-	private int AutoReportID()
+	/***********************************************************************************************/ 
+	private int AutoReportID()/**/
 	{
 		int repID=0;
 		try{
@@ -33,7 +34,8 @@ public class Report
 		}
 		return repID+1;
 	}
-	public void DiagonistReport(int pid,int appid,int docid)
+	/***********************************************************************************************/ 
+	public void DiagonistReport(int pid,int appid,int docid)/*This Method*/
 	{
 		this.pid=pid;
 		this.appid=appid;
@@ -54,7 +56,8 @@ public class Report
 			System.out.println("** Enter Appropriate Details Please **");	
 		}
 	}
-	int GetDoctorFees(int docID)
+	/***********************************************************************************************/ 
+	int GetDoctorFees(int docID)/**/
 	{
 		int  DoctorFees = 0;
 		try
@@ -71,7 +74,8 @@ public class Report
 		}
 		return DoctorFees;	
 	}
-	String GetStatus(int docID)
+	/***********************************************************************************************/ 
+	String GetStatus(int docID)/**/
 	{
 		String status = null;
 		try
@@ -90,7 +94,8 @@ public class Report
 		}
 		return status;
 	}
-	public void GenerateReport()
+	/***********************************************************************************************/ 
+	public void GenerateReport()/**/
 	{
 		try {
 			Connection con=ConnectionProvider.getCon();
@@ -101,7 +106,8 @@ public class Report
 			System.out.println(e.getMessage());
 		}
 	}
-	public void ShowReport()
+	/***********************************************************************************************/ 
+	public void ShowReport()/**/
 	{
 		try 
 		{
@@ -111,4 +117,5 @@ public class Report
 		catch(Exception e)
 		{ System.out.println("EXCEPTION OCCURS");}  
 	}
+	/***********************************************************************************************/ 
 }

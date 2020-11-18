@@ -1,3 +1,4 @@
+/**********************************************************|Doctor Class|*********************************************************/
 package EHMS;
 import java.sql.*;
 import java.sql.Connection;
@@ -7,11 +8,12 @@ import java.sql.Statement;
 import java.util.Scanner;
 public class Doctor extends Person
 {
-	int docid;
-	String Doctor_Type;
-	String Qualification;
+	int docid;//DoctorID
+	String Doctor_Type;//Type of doctor
+	String Qualification;//
 	int Entry_Charge;
 	Scanner sc=new Scanner(System.in);
+	/***********************************************************************************************/ 
 	public void DoctorRegistration(int docid)
 	{
 		System.out.println("Enter the following Details");
@@ -63,25 +65,8 @@ public class Doctor extends Person
 		Register reg=new Register();
     	reg.doctor_Registration(docid,First_Name,Last_Name,Gender,CN,age,Entry_Charge,Qualification,Doctor_Type,Email_Address);//change the database
 	}
-
-//	public void ShowDoctorDetails(int d)
-//	{
-//
-//    	try {
-//    		Connection con=ConnectionProvider.getCon();
-//    		Statement st=con.createStatement();
-//    		ResultSet rs=st.executeQuery("Select * from Patients where pid=id");
-//    		while(rs.next())
-//    		{
-//    			//yash 
-//    		}
-//    	}
-//    	catch(Exception e)
-//    	{
-//    		System.out.println(e.getMessage());
-//    	}
-//	}
-	public void ShowDoctorDetails(int d)
+	/***********************************************************************************************/ 
+	public void ShowDoctorDetails(int d)//This function Show All Details Of the doctor//
 	{
 		try {
     		Connection con=ConnectionProvider.getCon();
@@ -103,6 +88,7 @@ public class Doctor extends Person
     		System.out.println(e.getMessage());
     	}
 	}
+	/***********************************************************************************************/ 
 	public void viewAppointment(int docid)
 	{
 		int t=0;
@@ -127,6 +113,7 @@ public class Doctor extends Person
     		System.out.println(e.getMessage());
     	}
 	}
+	/***********************************************************************************************/ 
 //	public void DiagonistPatient(int id)
 //	{
 //		System.out.println("Enter the Appointment_Id of the patient which you want to check!!");
@@ -144,6 +131,7 @@ public class Doctor extends Person
 //		}
 //		
 //	}
+	/***********************************************************************************************/ 
 	public void DiagonistPatient(int id)
 	{
 		System.out.println("Enter the Appointment_Id of the patient which you want to check!!");
@@ -161,37 +149,6 @@ public class Doctor extends Person
 		}
 		
 	}
-//	public void viewPatient()
-//	{
-//		try 
-//		{
-//			Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//			ResultSet rs=st.executeQuery("select * from Patients");
-//			while(rs.next())
-//			{
-//				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4));//yash
-//			}
-//		}
-//		catch(Exception e)
-//		{ System.out.println(e);}  
-//	}
-//	public void viewDoctor()
-//    {
-//    	try 
-//		{
-//    		Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//			Class.forName("com.mysql.jdbc.Driver");
-//			ResultSet rs=st.executeQuery("select * from Doctors");
-//			while(rs.next())
-//			{
-//				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash
-//			}
-//		}
-//		catch(Exception e)
-//		{ System.out.println(e);}  
-//		
-//    }
+	/***********************************************************************************************/ 
 
 }

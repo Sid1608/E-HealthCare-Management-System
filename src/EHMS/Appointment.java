@@ -7,15 +7,19 @@ import java.util.Scanner;
 
 public class Appointment 
 {
-	private  int Apid,pid,choosedID;
+	private  int Apid;
+	private int pid;
 	private String Problem;
+	int Doctor_id;
 	String Doctor_Name;
 	String Doctor_Type;
-	String AppStatus="Pending";
-	String payment_status;
+	String Doctor_Qualification;
 	int docFees;
+	String Appointment_Status="Pending";
+	String payment_status;
 	Scanner sc=new Scanner(System.in);
-	private int AutoAppointmentID()
+	/***********************************************************************************************/ 
+	private int AutoAppointmentID()/*This Method Returns AppointmentID */
 	{
 		int appID=0;
 		try{
@@ -34,6 +38,8 @@ public class Appointment
 		}
 		return appID+1;
 	}
+	/***********************************************************************************************/ 
+	/**/
 	public void BookAppointment(int id)
 
 	{
@@ -45,8 +51,15 @@ public class Appointment
 		Problem=sc.next();
 		
 		/*choosing doctor */
-		ChooseDoctor();
-		
+		Doctor_id=ChooseDoctor();
+		while(Doctor_id==0)
+		{
+			System.out.println("** PLEASE CHOOSE AN APPROPRIATE OPTION **");
+			Doctor_id=ChooseDoctor();
+		}
+		Doctor_Name=GetDoctorName(Doctor_id);
+		docFees=GetDoctorFees(Doctor_id);
+		Doctor_Qualification=GetDoctorQualification(Doctor_id);
 		//conforming the doctor --
 		int d;
 		System.out.println("\t** Enter 1 to confirm **");
@@ -56,8 +69,9 @@ public class Appointment
 			ConfirmAppointment();
 		}	
 	}
+	/***********************************************************************************************/ 
 
-	void ChooseDoctor()
+	int ChooseDoctor()
 	{
 		System.out.println("*** Choose Doctor Type According to your problem!! ***");
 		System.out.print("\t**********************************************************************************************\n");
@@ -92,19 +106,8 @@ public class Appointment
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
-					choosedID = sc.nextInt();
-					System.out.println("\t***   BELOW IS YOUR Appointed_Doctor Detail ***");
-					ResultSet Rs=st.executeQuery("select * from Doctors where DoctorID = "+choosedID);
-					while(Rs.next())
-					{
-						docFees = rs.getInt(7);
-						Doctor_Name = rs.getString(2);
-						System.out.print("\t************************************************************\n");
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t************************************************************\n");
-					}
+					int choosedID = sc.nextInt();
+					return choosedID;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -127,19 +130,8 @@ public class Appointment
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
-					choosedID = sc.nextInt();
-					System.out.println("\t***   BELOW IS YOUR Appointed_Doctor Detail ***");
-					ResultSet Rs=st.executeQuery("select * from Doctors where DoctorID = "+choosedID);
-					while(Rs.next())
-					{
-						docFees = rs.getInt(7);
-						Doctor_Name = rs.getString(2);
-						System.out.print("\t************************************************************\n");
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t************************************************************\n");
-					}
+					int choosedID = sc.nextInt();
+					return choosedID;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -162,19 +154,8 @@ public class Appointment
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
-					choosedID = sc.nextInt();
-					System.out.println("\t***   BELOW IS YOUR Appointed_Doctor Detail ***");
-					ResultSet Rs=st.executeQuery("select * from Doctors where DoctorID = "+choosedID);
-					while(Rs.next())
-					{
-						docFees = rs.getInt(7);
-						Doctor_Name = rs.getString(2);
-						System.out.print("\t************************************************************\n");
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t************************************************************\n");
-					}
+					int choosedID = sc.nextInt();
+					return choosedID;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -197,19 +178,8 @@ public class Appointment
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
-					choosedID = sc.nextInt();
-					System.out.println("\t***   BELOW IS YOUR Appointed_Doctor Detail ***");
-					ResultSet Rs=st.executeQuery("select * from Doctors where DoctorID = "+choosedID);
-					while(Rs.next())
-					{
-						docFees = rs.getInt(7);
-						Doctor_Name = rs.getString(2);
-						System.out.print("\t************************************************************\n");
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t************************************************************\n");
-					}
+					int choosedID = sc.nextInt();
+					return choosedID;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -232,19 +202,8 @@ public class Appointment
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
-					choosedID = sc.nextInt();
-					System.out.println("\t***   BELOW IS YOUR Appointed_Doctor Detail ***");
-					ResultSet Rs=st.executeQuery("select * from Doctors where DoctorID = "+choosedID);
-					while(Rs.next())
-					{
-						docFees = rs.getInt(7);
-						Doctor_Name = rs.getString(2);
-						System.out.print("\t************************************************************\n");
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t************************************************************\n");
-					}
+					int choosedID = sc.nextInt();
+					return choosedID;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -266,23 +225,12 @@ public class Appointment
 						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
 						System.out.print("\t************************************************************\n");	
 					}
-					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
-					choosedID = sc.nextInt();
-					System.out.println("\t***   BELOW IS YOUR Appointed_Doctor Detail ***");
-					ResultSet Rs=st.executeQuery("select * from Doctors where DoctorID = "+choosedID);
-					while(Rs.next())
-					{
-						docFees = rs.getInt(7);
-						Doctor_Name = rs.getString(2);
-						System.out.print("\t************************************************************\n");
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t************************************************************\n");
-					}
 				}catch(Exception e) {
-					System.out.println(e.getMessage());
-				}
+						System.out.println(e.getMessage());
+					}
+					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
+					int choosedID = sc.nextInt();
+					return choosedID;
 			}
 			case 7:
 			{
@@ -302,31 +250,22 @@ public class Appointment
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
-					choosedID = sc.nextInt();
-					System.out.println("\t***   BELOW IS YOUR Appointed_Doctor Detail ***");
-					ResultSet Rs=st.executeQuery("select * from Doctors where DoctorID = "+choosedID);
-					while(Rs.next())
-					{
-						docFees = rs.getInt(7);
-						Doctor_Name = rs.getString(2);
-						System.out.print("\t************************************************************\n");
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t************************************************************\n");
-					}
+					int choosedID = sc.nextInt();
+					return choosedID;
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
 			}
 			default :
 		    {
-		    	System.out.println("** PLEASE CHOOSE AN APPROPRIATE OPTION **");
+		    	
+		    	return 0;
 		    }
 		}
 	}
+	/***********************************************************************************************/ 
 	
-	String GetDoctorName(int docID)
+	String GetDoctorName(int docID)/**/
 	{
 		String DoctorName = null;
 		try
@@ -343,46 +282,7 @@ public class Appointment
 		}
 		return DoctorName;
 	}
-	
-	
-	//to return doctor type.
-	String GetDoctorType(int docID)
-	{
-		String DoctorType = null;
-		try
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			ResultSet rs=st.executeQuery("select * from Doctors where DoctorID="+docID);
-			while(rs.next())
-			{
-				DoctorType = rs.getString(9);
-			}
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return DoctorType;
-	}
-	
-	//return qualification of Doctor
-	String GetDoctorQualification(int docID)
-	{
-		String DoctorQualification = null;
-		try
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			ResultSet rs=st.executeQuery("select * from Doctors where DoctorID="+docID);
-			while(rs.next())
-			{
-				DoctorQualification = rs.getString(8);
-			}
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return DoctorQualification;
-	}
-	
+	/***********************************************************************************************/ 
 	//return doctor Fees
 	int GetDoctorFees(int docID)
 	{
@@ -401,10 +301,26 @@ public class Appointment
 		}
 		return DoctorFees;	
 	}
-	
-	
-	
-	public String billpayment(int fee)
+	/***********************************************************************************************/ 
+	String GetDoctorQualification(int docID)
+	{
+		String DoctorQualification = null;
+		try
+		{
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("select * from Doctors where DoctorID="+docID);
+			while(rs.next())
+			{
+				DoctorQualification = rs.getString(8);
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return DoctorQualification;
+	}
+	/***********************************************************************************************/ 
+	public String billpayment(int fee)//Method for paying fees to the doctor
     {
     	Payment p=new Payment();
     	System.out.println("Doctor-Fees:"+fee);
@@ -412,8 +328,8 @@ public class Appointment
     	String status=p.CreditCardDetails(fee);
     	return status;
     }
-	
-	public void ConfirmAppointment()//Add all details into appointment database
+	/***********************************************************************************************/ 
+	public void ConfirmAppointment()//This Method Add all details into appointment table of EHMS Database
 	{
 			
 			payment_status=billpayment(docFees);
@@ -424,7 +340,7 @@ public class Appointment
 				{
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeUpdate("INSERT INTO Appointments VALUES ('"+Apid+"','"+Problem+"','"+pid+"','"+GetDoctorName(choosedID)+"','"+choosedID+"','"+GetDoctorType(choosedID)+"','"+GetDoctorQualification(choosedID)+"','"+GetDoctorFees(choosedID)+"','"+payment_status+"')");
+					st.executeUpdate("INSERT INTO Appointments VALUES ('"+Apid+"','"+Problem+"','"+pid+"','"+Doctor_Name+"','"+Doctor_id+"','"+Doctor_Type+"','"+Doctor_Qualification+"','"+docFees+"','"+payment_status+"')");
 				}
 				catch(Exception e)
 				{
@@ -437,4 +353,5 @@ public class Appointment
 			}
 
 	}
+	/***********************************************************************************************/ 
 }

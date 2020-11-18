@@ -50,11 +50,12 @@ public class Admin extends Person
 		}
 		return DoctorID;
 	}
+	/*Admin can view all the Doctor detail*/
 	public void viewDoctors()
 	{
 		try 
 		{
-			Connection con=ConnectionProvider.getCon();
+			Connection con=ConnectionProvider.getCon();//getting connection//
 			DBTablePrinter.printTable(con, "Doctors");
 			con.close();
 		}
@@ -63,23 +64,7 @@ public class Admin extends Person
 			System.out.println("EXCEPTION OCCURS");
 		}  
 	}
-
-
-	
-//	public void viewPatientReport() 
-//	{
-//		try
-//		{
-//			Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//			st.execute("");
-//			System.out.println("Removed Succesfully");
-//		}
-//		catch(Exception e)
-//		{
-//			System.out.println(e.getMessage());
-//		}
-//	}
+	/*Admin can view all the patients detail*/
 	public void viewPatients()
 	{
 		try 
@@ -90,7 +75,7 @@ public class Admin extends Person
 		catch(Exception e)
 		{ System.out.println("EXCEPTION OCCURS");}  
 	}
-	
+	/*Admin can remove doctor */
 	public void RemoveDoctor(int id)
 	{
 		try 
@@ -98,11 +83,12 @@ public class Admin extends Person
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
 			st.executeUpdate("delete  from Doctors where DoctorID = "+id);
-			System.out.println("Removed Succesfully");
+			System.out.println("Doctor Removed Succesfully!!");
 		}
 		catch(Exception e)
-		{ System.out.println("EXCEPTION OCCURS");}  
+		{ System.out.println("EXCEPTION OCCURS"+e.getMessage());}  
 	}
+	/*Admin can view feedback*/
 	public void ViewFeedback() //admin can view all the feedback
 	{
 		try 
@@ -113,7 +99,8 @@ public class Admin extends Person
 		catch(Exception e)
 		{ System.out.println("EXCEPTION OCCURS");}	
 	}
-	public void Appointment()
+	/*Admin can view all the all the appointment taking place */
+	public void ViewAppointment()
 	{
 		try 
 		{
@@ -124,22 +111,4 @@ public class Admin extends Person
 		{ System.out.println("EXCEPTION OCCURS");}  
 		
 	}  
-//	public void viewAppointment()
-//	{
-//		try 
-//		{
-//			Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//			ResultSet rs=st.executeQuery("select * from Doctors");
-//			while(rs.next())
-//			{
-//				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash isko bharde table ko dekhkar
-//			}
-//			
-//		}catch(Exception e)
-//		{
-//
-//		}
-//	}
-
 }

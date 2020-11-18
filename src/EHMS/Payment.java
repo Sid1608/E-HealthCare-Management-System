@@ -1,12 +1,12 @@
-
+//****************************************************************PAYMENT-CLASS******************************************************************************//
 package EHMS;
 
 import java.util.*;
-
+/***********************************************************************************************/ 
 public class Payment 
 {
 	Scanner input=new Scanner(System.in);
-	public String CreditCardDetails(int fee)
+	public String CreditCardDetails(int fee)//THIS METHOD TAKES THE CREDIT CARD DETILS OF THE PATIENT 
 	{
 		String Status;
 		System.out.println("Enter Amount:"+fee);
@@ -32,3 +32,4 @@ public class Payment
 		}
 	}
 }
+/***********************************************************************************************/ 
