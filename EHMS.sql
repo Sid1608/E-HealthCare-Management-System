@@ -4,7 +4,7 @@ create database HealthcareMangaementSystem;
 use HealthcareMangaementSystem;
 create table Users(
 	userID int,
-    userType varchar(100),
+    userType varchar(100),#Patient,#Doctor  20 patient 20 doctor kai
 	Password varchar(100),
 	primary key(userID,userType)
 );

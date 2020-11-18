@@ -170,11 +170,11 @@ public class Appointment
 					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Bone'");
 					while(rs.next())
 					{
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     *\n");
-						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
+						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
+						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  \n");
+						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         \n");
+						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     \n");
+						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");

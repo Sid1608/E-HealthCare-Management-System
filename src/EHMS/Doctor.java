@@ -60,6 +60,9 @@ public class Doctor extends Person
 				break;
 			}
 			default:
+			{
+				System.out.println("");
+			}
 				
 		}
 		Register reg=new Register();
@@ -74,7 +77,6 @@ public class Doctor extends Person
     		ResultSet rs=st.executeQuery("Select * from Doctors where DoctorID="+d);
     		while(rs.next())
     		{
-    			//yash 
     			System.out.println("DoctorID: "+rs.getInt(1));
     			System.out.println("Name: "+rs.getString(2)+" "+rs.getString(3));
     			System.out.println("Qualification "+rs.getString(8));

@@ -48,7 +48,7 @@ public class Patients extends Person//patient class Inheriting from person class
 		try {
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeUpdate("insert into Users values('"+PatientID+"','"+password+"','"+"Patient"+"')");
+			st.executeUpdate("insert into Users values('"+password+"','"+PatientID+"','"+"Patient"+"')");
 			System.out.println("Registered Succesfully!!");
 		}catch(Exception e){
 			System.out.println("Please enter data in correct format!!");
@@ -70,14 +70,23 @@ public class Patients extends Person//patient class Inheriting from person class
     /***********************************************************************************************/ 
     public void ShowPatientDetails(int id)
     {
-    	try 
-		{
-			Connection con=ConnectionProvider.getCon();
-			DBTablePrinter.printTable(con, "Patients");
-			con.close();
-		}
-		catch(Exception e)
-		{ System.out.println("EXCEPTION OCCURS");}  
+    	try {
+    		Connection con=ConnectionProvider.getCon();
+    		Statement st=con.createStatement();
+    		ResultSet rs=st.executeQuery("Select * from Patients where PatientID="+id);
+    		while(rs.next())
+    		{
+    			System.out.println("PatientID: "+rs.getInt(1));
+    			System.out.println("Name: "+rs.getString(2)+" "+rs.getString(3));
+    			System.out.println(""+rs.getString(8));
+    			System.out.println(""+rs.getString(9));
+    			System.out.println(" "+rs.getString(5));
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    	}
 	}  
     /***********************************************************************************************/
     
@@ -106,22 +115,22 @@ public class Patients extends Person//patient class Inheriting from person class
     	int t=0;
 		try {
     		Connection con=ConnectionProvider.getCon();
-//    		Statement st=con.createStatement();
-//    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id);
-//    		while(rs.next())
-//    		{
-//    			t++;
-//    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
-//				System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
-//				System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
-//				System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
-//				System.out.print("\t* Doctor_Id :      "+rs.getInt(5)+"                          \n");
-//				System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
-//				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
-//				System.out.print("\t*************************************************************\n");	
-//    		}
-    		DBTablePrinter.printTable(con, "");
-			con.close();
+    		Statement st=con.createStatement();
+    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id);
+    		while(rs.next())
+    		{
+    			t++;
+    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
+				System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
+				System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
+				System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
+				System.out.print("\t* Doctor_Id :      "+rs.getInt(5)+"                          \n");
+				System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
+				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
+				System.out.print("\t*************************************************************\n");	
+    		}
+//    		DBTablePrinter.printTable(con, "");
+//			con.close();
     		
     	}
     	catch(Exception e)

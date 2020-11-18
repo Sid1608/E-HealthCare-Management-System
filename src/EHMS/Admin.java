@@ -55,7 +55,7 @@ public class Admin extends Person
 	{
 		try 
 		{
-			Connection con=ConnectionProvider.getCon();//getting connection//
+			Connection con=ConnectionProvider.getCon();/*getting connection*/
 			DBTablePrinter.printTable(con, "Doctors");
 			con.close();
 		}

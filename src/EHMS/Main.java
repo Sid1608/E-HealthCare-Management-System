@@ -15,8 +15,6 @@ public class Main
 		Admin a=new Admin();
 		Patients p=null;
 		Doctor d=null;
-		Patients[] P=new Patients[10000];
-		Doctor[] D=new Doctor[10000];
 		while(true)
 		{
 	        System.out.print("\t**********************************************************************************************\n");
@@ -116,16 +114,22 @@ public class Main
 		    	System.out.println("*****************Welcome to patient portal***********************");
 		    	int id;
 		    	String pd;
-		    	String userType="Patient";
+		    //	String userType="Patient";
 		    	System.out.print("ID:");id=sc.nextInt();
 		    	System.out.print("Password:");pd=sc.next();
 		    	try {
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeQuery("Select * from Users where userID="+id+" && userType='Patient' && Password="+pd+";");
-					flag=1;
+//					st.executeQuery("Select * from Users where userID="+id+" and userType='Patient' and Password="+pd+"");
+					ResultSet rs=st.executeQuery("Select * from Users");
+					while(rs.next()) {
+						if(rs.getInt(1)==id && rs.getString(2).compareTo("Patient")==0 && (rs.getString(3).compareTo(pd)==0 )){
+							flag=1;
+						}
+					}
 				}catch(Exception e){
-					System.out.println("Not Registerd"+e.getMessage());
+					//System.out.println("Not Registerd"+e.getMessage());
+					e.printStackTrace();
 				}
 		    	if(flag==1)
 		    	{
@@ -147,32 +151,46 @@ public class Main
 		    			{
 		    				case 1:
 		    				{
-		    					P[id].ShowPatientDetails(id);
+		    					p=new Patients();
+		    					p.ShowPatientDetails(id);
+		    					break;
 		    				}
 		    				case 2:
 		    				{
-		    					P[id].viewDoctor();
+		    					p=new Patients();
+		    					p.viewDoctor();
+		    					break;
 		    				}
 		    				case 3:
 		    				{
-		    					P[id].BookAppointment(id);
+		    					p=new Patients();
+		    					p.BookAppointment(id);
+		    					break;
 		    					
 		    				}
 		    				case 4:
 		    				{
-		    					P[id].ViewReport(id);
+		    					p=new Patients();
+		    					p.ViewReport(id);
+		    					break;
 		    				}
 		    				case 5:
 		    				{
-		    					P[id].viewAppointment(id);
+		    					p=new Patients();
+		    					p.viewAppointment(id);
+		    					break;
 		    				}
 		    				case 6:
 		    				{
-		    					P[id].ChangePassword(id);
+		    					p=new Patients();
+		    					p.ChangePassword(id);
+		    					break;
 		    				}
 		    				case 7:
 		    				{
-		    					P[id].Givefeedback(id) ;
+		    					p=new Patients();
+		    					p.Givefeedback(id) ;
+		    					break;
 		    					
 		    				}
 		    				case 8:
@@ -183,8 +201,12 @@ public class Main
 		    			}
 		    			if(checkPatient)
 		    				break;
-		    		}//end of while
+		    		}
 		    	}
+		    	else
+	    		{
+	    			System.out.println("Invalid username or password");
+	    		}
 		    	break;
 		    }
 		    case 3: //For Doctor
@@ -222,15 +244,21 @@ public class Main
 		    			{
 		    				case 1:
 		    				{
-		    					D[id].ShowDoctorDetails(id);
+		    					d=new Doctor();
+		    					d.ShowDoctorDetails(id);
+		    					break;
 		    				}
 		    				case 2:
 		    				{
-		    					D[id].viewAppointment(id);
+		    					d=new Doctor();
+		    					d.viewAppointment(id);
+		    					break;
 		    				}
 		    				case 3:
 		    				{
-		    					D[id].DiagonistPatient(id);
+		    					d=new Doctor();
+		    					d.DiagonistPatient(id);
+		    					break;
 		    				}
 		    				case 4:
 		    				{
@@ -248,8 +276,8 @@ public class Main
 		    case 4:   /**For Patient Registration**/
 		    {
 		    	p=new Patients();
-		    	int pid=p.addPatient(P);
-		    	System.out.println("****** Fill the following details ******");
+		    	int pid=p.addPatient();
+		    	System.out.println("*** Fill the following details ***");
 		    	p.PatientRegistration(pid);
 		    	break;
 		    }
