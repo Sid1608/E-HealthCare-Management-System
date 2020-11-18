@@ -1,7 +1,7 @@
+
 package EHMS;
 
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class Payment 
 {
@@ -10,11 +10,15 @@ public class Payment
 	{
 		String Status;
 		System.out.println("Enter Amount:"+fee);
+		System.out.println("Enter CARD-HOLDER Name : ");
 		String cardHolderName=input.next();
+		System.out.println("Enter CARD-NUMBER : ");
 		int card_no=input.nextInt();
+		System.out.println("Enter EXPIRY DATE : ");
 		String ExpiryDate=input.toString();
+		System.out.println("Enter CVC number of CARD : ");
 		int cvc=input.nextInt();
-		System.out.println("Enter 1 to confirm Payment!!!");
+		System.out.println("*** Enter 1 to confirm Payment ***");
 		int x=input.nextInt();
 		if(x==1)
 		{
@@ -26,7 +30,5 @@ public class Payment
 			System.out.println("Your Appointment is cancelled");
 			return "NotPayed";
 		}
-		
-		
 	}
 }

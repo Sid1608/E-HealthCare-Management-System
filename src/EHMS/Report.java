@@ -47,18 +47,68 @@ public class Report
 		if(x==1)
 		{
 			GenerateReport();
+			ShowReport();
 		}
-		
+		else
+		{
+			System.out.println("** Enter Appropriate Details Please **");	
+		}
 	}
-	public void GenerateReport()//yash
+	int GetDoctorFees(int docID)
+	{
+		int  DoctorFees = 0;
+		try
+		{
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("select * from Doctors where DoctorID="+docID);
+			while(rs.next())
+			{
+				DoctorFees = rs.getInt(7);
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return DoctorFees;	
+	}
+	String GetStatus(int docID)
+	{
+		String status = null;
+		try
+		{
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("select * from Appointments where DoctorID="+docID);
+			while(rs.next())
+			{
+				status = rs.getString(9);
+			}	
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		return status;
+	}
+	public void GenerateReport()
 	{
 		try {
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			//ResultSet rs=st.executeUpdate("");//     Yash//
+			st.executeUpdate("INSERT INTO Reports VALUES ('"+AutoReportID()+"','"+appid+"','"+pid+"','"+docid+"','"+MedicinePrescribed+"','"+DoctorsComment+"','"+GetDoctorFees(docid)+"','"+GetStatus(docid)+"')");
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
+	}
+	public void ShowReport()
+	{
+		try 
+		{
+			Connection con=ConnectionProvider.getCon();
+			DBTablePrinter.printTable(con, "Reports");
+		}
+		catch(Exception e)
+		{ System.out.println("EXCEPTION OCCURS");}  
 	}
 }

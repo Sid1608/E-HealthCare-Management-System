@@ -14,7 +14,6 @@ public class Admin extends Person
 			Statement st=con.createStatement();
 			ResultSet rs=st.executeQuery("Select MAX(UserID) as NextUserID from Users where userType='Doctor'");
 			rs.next();
-//			rs.getInt(1);
 			docid = rs.getInt(1);
 			if(rs.wasNull())
 			{
@@ -53,89 +52,94 @@ public class Admin extends Person
 	}
 	public void viewDoctors()
 	{
-		System.out.println("Enter 1 to view all Doctors 2 to view Doctor by id");
-		try
+		try 
 		{
 			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			ResultSet rs=st.executeQuery("select * from Doctors");
-			while(rs.next())
-			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash isko bharde table ko dekhkar
-			}
+			DBTablePrinter.printTable(con, "Doctors");
+			con.close();
 		}
 		catch(Exception e)
-		{ System.out.println(e);}
-
-
+		{ 
+			System.out.println("EXCEPTION OCCURS");
+		}  
 	}
+
+
+	
+//	public void viewPatientReport() 
+//	{
+//		try
+//		{
+//			Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//			st.execute("");
+//			System.out.println("Removed Succesfully");
+//		}
+//		catch(Exception e)
+//		{
+//			System.out.println(e.getMessage());
+//		}
+//	}
 	public void viewPatients()
 	{
-		try
+		try 
 		{
 			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			String query="select * from Patients";
-			ResultSet rs=st.executeQuery(query);
-			while(rs.next())
-			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//Yash
-			}
+			DBTablePrinter.printTable(con, "Patients");
 		}
 		catch(Exception e)
-		{ System.out.println(e);}
+		{ System.out.println("EXCEPTION OCCURS");}  
 	}
+	
 	public void RemoveDoctor(int id)
-	{
-		try
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			st.executeUpdate("");//    yash 
-			System.out.println("Removed Succesfully");
-		}
-		catch(Exception e)
-		{ System.out.println(e);}
-	}
-	public void viewPatientReport() 
-	{
-		try
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			st.execute("");//yash 
-			System.out.println("Removed Succesfully");
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-		}
-	}
-	public void ViewFeedback() //admin can view all the feedback
-	{
-		try {   //yash
-			
-		}catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-		}
-	}
-	public void viewAppointment()
 	{
 		try 
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			ResultSet rs=st.executeQuery("select * from Doctors");
-			while(rs.next())
-			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash isko bharde table ko dekhkar
-			}
-			
-		}catch(Exception e)
-		{
-
+			st.executeUpdate("delete  from Doctors where DoctorID = "+id);
+			System.out.println("Removed Succesfully");
 		}
+		catch(Exception e)
+		{ System.out.println("EXCEPTION OCCURS");}  
 	}
+	public void ViewFeedback() //admin can view all the feedback
+	{
+		try 
+		{ 
+			Connection con=ConnectionProvider.getCon();
+			DBTablePrinter.printTable(con, "feedback");
+		}
+		catch(Exception e)
+		{ System.out.println("EXCEPTION OCCURS");}	
+	}
+	public void Appointment()
+	{
+		try 
+		{
+			Connection con=ConnectionProvider.getCon();
+			DBTablePrinter.printTable(con, "Appointments");
+		}
+		catch(Exception e)
+		{ System.out.println("EXCEPTION OCCURS");}  
+		
+	}  
+//	public void viewAppointment()
+//	{
+//		try 
+//		{
+//			Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//			ResultSet rs=st.executeQuery("select * from Doctors");
+//			while(rs.next())
+//			{
+//				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash isko bharde table ko dekhkar
+//			}
+//			
+//		}catch(Exception e)
+//		{
+//
+//		}
+//	}
 
 }

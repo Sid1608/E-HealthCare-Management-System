@@ -1,4 +1,4 @@
-####################################E-Health-CareManagement-System#################################################################
+							######################## ----E-Health-CareManagement-System--------- #####################
 #drop database HealthcareMangaementSystem;
 create database HealthcareMangaementSystem;
 use HealthcareMangaementSystem;
@@ -16,7 +16,7 @@ create table Patients(
     Gender varchar(5),
     ContactNumber varchar(11),
     Age int ,
-    EmailID varchar(20),
+    EmailID varchar(30),
     BloodGroup varchar(5),
     Address varchar(50),
 	primary key(PatientID)
@@ -33,7 +33,7 @@ create table Doctors(
     Entry_Charge int,#
     Qualification varchar(50),#Mbbs etc
     Doctor_Type varchar(50),#"1.Eyes\n 2.EAR.\n3.Heart\n4.Bone\n5.Lungs\n6.Kidney\n7.General_Physicist"
-    Email_Id varchar(20),
+    Email_Id varchar(30),
     primary key(DoctorID)
 );
 create table Appointments
@@ -70,4 +70,58 @@ create table feedback
     Doc_Nature varchar(20),
     PatientComment varchar(100)
 );
-    
+ insert into Patients ( PatientID , First_Name , Last_Name ,Gender , ContactNumber ,Age,EmailId,BloodGroup,Address)
+values
+(1,"Sanjay","Gosavi","M","9828698648",28,"sanjay24gosavi@gmail.com","B+","D-402 Anand Nagar M.I. road Delhi"),
+(2,"Anand","Sharma","M","9858688788",30,"anand54sharma@gmail.com","B+","E-002 Tilak Nagar New Delhi"),
+(3,"Subhash","Garg","M","9667479292",34,"gargsubash1703@gmail.com","A+","Basant Vihar Pune"),
+(4,"Priya","Khandelwal","F","8005629518",28,"sanjay24gosavi@gmail.com","B-","PlotNo. 104 Subhash chowk Chandigarh"),
+(5,"Pritam","Yadav","M","9828652524",18,"letsmailprit02@gmail.com","AB+","C-03 Vaishali Nagar Jaipur"),
+(6,"Sanju","Sharma","M","9279264253",42,"sansharma8@gmail.com","B-","Gopal Nagar Bharatpur"),
+(7,"Tejaswani","Goswami","F","8005263213",32,"goswamiteja@gmail.com","A-","Prasad Dham Mumbai"),
+(8,"Sumit","Bhardwaj","M","8214358648",46,"sumit4566bhardwaj@gmail.com","O+","Surya Path Roorki"),
+(9,"Kavita","Jain","F","9825426363",15,"jain78kavi@gmail.com","AB+","Gaurav Path M.I. road Delhi"),
+(10,"Yogesh","Sihra","M","9828565642",28,"yogeshshira28@gmail.com","AB-","Durgapur road Kolkatta"),
+(11,"Bhanu","Pratap","M","8052674312",68,"bahnupratap@gmail.com","O+","vivekanand street Malipura"),
+(12,"Sonam","Tiwari","F","9797465823",18,"sonamtiwari423@gmail.com","A+","E-03 Tonk Phatak Jaipur"),
+(13,"Neha","Mehta","F","7073165498",24,"mehtaneha556@gmail.com","AB-","rani chawk jalandhar"),
+(14,"Roop","Devi","F","8302567823",56,"roopdevima@gmail.com","B-","Chandni chawak Delhi"),
+(15,"Yash","Chaudary","M","9886756678",36,"chaudaryash011@gmail.com","AB+","Rashi Mansion Indore"),
+(16,"Suraj","Yadav","M","8308576312",24,"itssuraj@gmail.com","A+","Usha vihar bhilwada"),
+(17,"Arjun","Sethi","M","7782385721",42,"arjun11sethi@gmail.com","B+"," Flat no.33 Behind Uday Street Bhopal"),
+(18,"Priya","Goyal","F","8857283942",32,"angelpriya@gmail.com","A-","Bajri Mandi Gandhi Path Kota"),
+(19,"Aanvi","Singhal","F","9815215367",12,"aanvisinghal100@gmail.com","B-","Chhatrapati Shivaji Mansion Mumbai"),
+(20,"Rohit","Singh","M","8358032156",27,"rohitsingh124@gmail.com","O+","Ganesh Vihar Mudrai");
+
+
+
+
+
+insert into Doctors (DoctorID,First_Name,Last_Name,Gender,ContactNumber,Age,Entry_Charge,Qualification,Doctor_Type,Email_Id)
+values
+(1,"Vivek","Bhardwaj","M","9243668213",32,400,"MD","ear","bhardwajvivek@gmail.com"),
+(2,"Vinod","Gupta","M","9382674321",42,300,"BDS","teeth","vinod24gupta@gmail.com"),
+(3,"Ashish","Arora","M","8213264251",47,200,"BHMS","eye","arorashish5871@gmail.com"),
+(4,"Poonam","Mishra","F","7782934712",27,700,"MD","neural","punamishra@gmail.com"),
+(5,"Madhu","Srivastva","F","9982675837",33,500,"MD","heart","srivastvamadhu@gmail.com"),
+(6,"Anoop","Faujdar","M","9788855387",58,550,"MBBS","bone","anoopfauji@gmail.com"),
+(7,"Ankita","Khandelwal","F","9985671358",36,300,"BAMS","physician","khandelwalankita@gmail.com"),
+(8,"Abhishek","Agarwal","M","8763505789",25,200,"Phd","skin","abhishekagarwal25@gmail.com"),
+(9,"Piyush","Gupta","M","7855671213",52,400,"MBBS","heart","piyushgupta562@gmail.com"),
+(10,"Priyanka","Jangid","F","8005628135",68,600,"BDS","teeth","prinyanka456jangid@gmail.com"),
+(11,"Deepak","Sharma","M","9505745565",38,250,"MS","physician","dipakshramtalks@gmail.com"),
+(12,"Prakash","Yadav","M","9460812415",47,350,"BAMS","eye","yadavprakash79@gmail.com"),
+(13,"Harish","Chauhan","M","9855762432",54,450,"PhD","ear","harishchauhanstarts@gmail.com"),
+(14,"Seema","Patodi","F","9651404283",63,500,"BHMS","bone","meseemapatodi@gmail.com"),
+(15,"Mukesh","Saxena","M","9887635723",69,450,"BUMS","bone","saxenamukesh@gmail.com"),
+(16,"Ashok","Gupta","M","9988735721",29,300,"BDS","ear","ashokgupta@gmail.com"),
+(17,"Ashish","Maheshwari","M","7082172315",35,300,"MBBS","heart","maheswariashish@gmail.com"),
+(18,"Neelam","rao","F","9652385745",39,350,"MD","neural","raoneelam46@gmail.com"),
+(19,"Priyanka","Sharma","F","8857638923",24,250,"BDS","teeth","priyanka24sharma@gmail.com"),
+(20,"Gaurav","Tripathi","M","8112857382",40,400,"MBBS","skin","gaurav00tripathi@gmail.com");
+
+
+
+select * from Doctors;
+
+   

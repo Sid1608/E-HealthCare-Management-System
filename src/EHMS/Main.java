@@ -34,7 +34,7 @@ public class Main
 		    	{
 		    		while(true)
 		    		{
-		    			System.out.println("1.viewDoctors\n2.viewPatients.\n3.addDoctor\n4.RemoveDoctor\n5viewAppointments\n6ViewFeedback.\n7Logout");
+		    			System.out.println("1.|__viewDoctors__|\n2.|__viewPatients__|.\n3.|__addDoctor__|\n4.|RemoveDoctor|\n5|viewAppointments|\n6|ViewFeedback|.\n7|Logout|");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
@@ -45,7 +45,7 @@ public class Main
 		    				}
 		    				case 2:
 		    				{
-		    					a.viewPatients();
+		    					a.viewPatients(); 
 		    					break;
 		    				}
 		    				case 3:
@@ -139,7 +139,7 @@ public class Main
 		    				}
 		    				case 8:
 		    				{
-		    					//break;yash -logout
+		    					
 		    				}
 		    			}
 		    		}
@@ -204,11 +204,21 @@ public class Main
 		    	p.PatientRegistration(pid);
 		    	break;
 		    }
-		    default:
-		    {
 
+		    case 5:
+		    {
+		    	System.out.println("**THANKS FOR VISITING US - Have A Nice Day**");
+		    	check = true;
 		    	break;
 		    }
+		    default :
+		    {
+		    	System.out.println("** PLEASE CHOOSE AN APPROPRIATE OPTION **");
+		    }
+		}
+		if(check)
+			break;
+		}//end of while loop
 		}
 		}
 

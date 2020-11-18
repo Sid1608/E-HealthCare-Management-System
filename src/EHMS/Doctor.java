@@ -64,16 +64,38 @@ public class Doctor extends Person
     	reg.doctor_Registration(docid,First_Name,Last_Name,Gender,CN,age,Entry_Charge,Qualification,Doctor_Type,Email_Address);//change the database
 	}
 
+//	public void ShowDoctorDetails(int d)
+//	{
+//
+//    	try {
+//    		Connection con=ConnectionProvider.getCon();
+//    		Statement st=con.createStatement();
+//    		ResultSet rs=st.executeQuery("Select * from Patients where pid=id");
+//    		while(rs.next())
+//    		{
+//    			//yash 
+//    		}
+//    	}
+//    	catch(Exception e)
+//    	{
+//    		System.out.println(e.getMessage());
+//    	}
+//	}
 	public void ShowDoctorDetails(int d)
 	{
-
-    	try {
+		try {
     		Connection con=ConnectionProvider.getCon();
     		Statement st=con.createStatement();
-    		ResultSet rs=st.executeQuery("Select * from Patients where pid=id");
+    		ResultSet rs=st.executeQuery("Select * from Doctors where DoctorID="+d);
     		while(rs.next())
     		{
     			//yash 
+    			System.out.println("DoctorID: "+rs.getInt(1));
+    			System.out.println("Name: "+rs.getString(2)+" "+rs.getString(3));
+    			System.out.println("Qualification "+rs.getString(8));
+    			System.out.println("Department "+rs.getString(9));
+    			System.out.println("Contact No: "+rs.getString(5));
+    			System.out.println("EmailId: "+rs.getString(10));
     		}
     	}
     	catch(Exception e)
@@ -83,20 +105,45 @@ public class Doctor extends Person
 	}
 	public void viewAppointment(int docid)
 	{
-		try
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			ResultSet rs=st.executeQuery("Select * from Appointments where DoctorID=docid");
-			rs.next();
-			while(rs.next())
-			{
-				//yash doctor ki appointments
-			}
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+		int t=0;
+		try {
+    		Connection con=ConnectionProvider.getCon();
+    		Statement st=con.createStatement();
+    		ResultSet rs=st.executeQuery("Select * from  Appointments where DoctorID="+docid);
+    		while(rs.next())
+    		{
+    			t++;
+    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
+				System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
+				System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
+				System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
+				System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
+				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
+				System.out.print("\t*************************************************************\n");	
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    	}
 	}
+//	public void DiagonistPatient(int id)
+//	{
+//		System.out.println("Enter the Appointment_Id of the patient which you want to check!!");
+//		int appid=sc.nextInt();
+//		try
+//		{
+//			Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//			st.executeQuery("Select * from Appointment where AppointmentID=appid and Payment_Status='Payed' and Appointment_Status='Pending'");
+//			Report rp=new Report();
+//			rp.DiagonistReport(id,appid,docid);
+//		}catch(Exception e)
+//		{
+//			System.out.println(e.getMessage());
+//		}
+//		
+//	}
 	public void DiagonistPatient(int id)
 	{
 		System.out.println("Enter the Appointment_Id of the patient which you want to check!!");
@@ -105,46 +152,46 @@ public class Doctor extends Person
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeQuery("Select * from Appointment where AppointmentID=appid and Payment_Status='Payed' and Appointment_Status='Pending'");//yash query sahi kardena
+			st.executeQuery("Select * from Appointment where AppointmentID="+appid+" and Payment_Status='Payed' and Appointment_Status='Pending'");
 			Report rp=new Report();
-			rp.DiagonistReport(id,appid,docid);
+			rp.DiagonistReport(id,appid,docid);  //idhr error aa skti hai sayhad .... id vala glt hoga sice hmne entry as parameter (int id) liya hai jo ki doctorid bta ti hai.....
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
 		
 	}
-	public void viewPatient()
-	{
-		try 
-		{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			ResultSet rs=st.executeQuery("select * from Patients");
-			while(rs.next())
-			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4));//yash
-			}
-		}
-		catch(Exception e)
-		{ System.out.println(e);}  
-	}
-	public void viewDoctor()
-    {
-    	try 
-		{
-    		Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			Class.forName("com.mysql.jdbc.Driver");
-			ResultSet rs=st.executeQuery("select * from Doctors");
-			while(rs.next())
-			{
-				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash
-			}
-		}
-		catch(Exception e)
-		{ System.out.println(e);}  
-		
-    }
+//	public void viewPatient()
+//	{
+//		try 
+//		{
+//			Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//			ResultSet rs=st.executeQuery("select * from Patients");
+//			while(rs.next())
+//			{
+//				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4));//yash
+//			}
+//		}
+//		catch(Exception e)
+//		{ System.out.println(e);}  
+//	}
+//	public void viewDoctor()
+//    {
+//    	try 
+//		{
+//    		Connection con=ConnectionProvider.getCon();
+//			Statement st=con.createStatement();
+//			Class.forName("com.mysql.jdbc.Driver");
+//			ResultSet rs=st.executeQuery("select * from Doctors");
+//			while(rs.next())
+//			{
+//				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));//yash
+//			}
+//		}
+//		catch(Exception e)
+//		{ System.out.println(e);}  
+//		
+//    }
 
 }
