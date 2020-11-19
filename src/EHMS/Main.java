@@ -114,13 +114,11 @@ public class Main
 		    	System.out.println("*****************Welcome to patient portal***********************");
 		    	int id;
 		    	String pd;
-		    //	String userType="Patient";
 		    	System.out.print("ID:");id=sc.nextInt();
 		    	System.out.print("Password:");pd=sc.next();
 		    	try {
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-//					st.executeQuery("Select * from Users where userID="+id+" and userType='Patient' and Password="+pd+"");
 					ResultSet rs=st.executeQuery("Select * from Users");
 					while(rs.next()) {
 						if(rs.getInt(1)==id && rs.getString(2).compareTo("Patient")==0 && (rs.getString(3).compareTo(pd)==0 )){
@@ -128,7 +126,6 @@ public class Main
 						}
 					}
 				}catch(Exception e){
-					//System.out.println("Not Registerd"+e.getMessage());
 					e.printStackTrace();
 				}
 		    	if(flag==1)
@@ -220,10 +217,14 @@ public class Main
 		    	System.out.print("DOCTOR - ID : ");id=sc.nextInt();
 		    	System.out.print("Password : ");pd=sc.next();
 		    	try {
-					Connection con=ConnectionProvider.getCon();
+		    		Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeUpdate("Select * from Users where userID="+id+" and userType="+userType+" and Password="+pd+";");
-					flag=1;
+					ResultSet rs=st.executeQuery("Select * from Users");
+					while(rs.next()) {
+						if(rs.getInt(1)==id && rs.getString(2).compareTo("Doctor")==0 && (rs.getString(3).compareTo(pd)==0 )){
+							flag=1;
+						}
+					}
 				}catch(Exception e){
 					System.out.println("Not Registerd");
 				}
@@ -271,7 +272,7 @@ public class Main
 		    		}//end of while
 		    			break;
 		    	}//end of if
-			
+		    	break;
 		    }
 		    case 4:   /**For Patient Registration**/
 		    {

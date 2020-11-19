@@ -1,14 +1,18 @@
 							######################## ----E-Health-CareManagement-System--------- #####################
 #drop database HealthcareMangaementSystem;
 create database HealthcareMangaementSystem;
+
+
 use HealthcareMangaementSystem;
 create table Users(
 	userID int,
-    userType varchar(100),#Patient,#Doctor  20 patient 20 doctor kai
+    userType varchar(100),
 	Password varchar(100),
 	primary key(userID,userType)
 );
 select * from Users;
+
+
 create table Patients(
 	PatientID int not null,
 	First_Name varchar(30), 
@@ -49,7 +53,7 @@ create table Appointments
     PaymentStatus varchar(33),
     Appointment_Status varchar(30)
 );
-
+SELECT * FROM Appointments;
 select * from Users;
 create table Reports
 (
@@ -63,12 +67,14 @@ create table Reports
     #status varchar(20),//yeh nahi hain
     primary key (ReportID)
 );
+drop table feedback;
 create table feedback
 (
 	PatientID int,
     points int,
-    Doc_Nature varchar(20),
-    PatientComment varchar(100)
+    Doc_Nature varchar(200),
+    Location varchar(200),
+    PatientComment varchar(1000)
 );
  insert into Patients ( PatientID , First_Name , Last_Name ,Gender , ContactNumber ,Age,EmailId,BloodGroup,Address)
 values
@@ -99,29 +105,72 @@ values
 
 insert into Doctors (DoctorID,First_Name,Last_Name,Gender,ContactNumber,Age,Entry_Charge,Qualification,Doctor_Type,Email_Id)
 values
-(1,"Vivek","Bhardwaj","M","9243668213",32,400,"MD","ear","bhardwajvivek@gmail.com"),
-(2,"Vinod","Gupta","M","9382674321",42,300,"BDS","teeth","vinod24gupta@gmail.com"),
-(3,"Ashish","Arora","M","8213264251",47,200,"BHMS","eye","arorashish5871@gmail.com"),
-(4,"Poonam","Mishra","F","7782934712",27,700,"MD","neural","punamishra@gmail.com"),
-(5,"Madhu","Srivastva","F","9982675837",33,500,"MD","heart","srivastvamadhu@gmail.com"),
-(6,"Anoop","Faujdar","M","9788855387",58,550,"MBBS","bone","anoopfauji@gmail.com"),
-(7,"Ankita","Khandelwal","F","9985671358",36,300,"BAMS","physician","khandelwalankita@gmail.com"),
-(8,"Abhishek","Agarwal","M","8763505789",25,200,"Phd","skin","abhishekagarwal25@gmail.com"),
-(9,"Piyush","Gupta","M","7855671213",52,400,"MBBS","heart","piyushgupta562@gmail.com"),
-(10,"Priyanka","Jangid","F","8005628135",68,600,"BDS","teeth","prinyanka456jangid@gmail.com"),
-(11,"Deepak","Sharma","M","9505745565",38,250,"MS","physician","dipakshramtalks@gmail.com"),
-(12,"Prakash","Yadav","M","9460812415",47,350,"BAMS","eye","yadavprakash79@gmail.com"),
-(13,"Harish","Chauhan","M","9855762432",54,450,"PhD","ear","harishchauhanstarts@gmail.com"),
-(14,"Seema","Patodi","F","9651404283",63,500,"BHMS","bone","meseemapatodi@gmail.com"),
-(15,"Mukesh","Saxena","M","9887635723",69,450,"BUMS","bone","saxenamukesh@gmail.com"),
-(16,"Ashok","Gupta","M","9988735721",29,300,"BDS","ear","ashokgupta@gmail.com"),
-(17,"Ashish","Maheshwari","M","7082172315",35,300,"MBBS","heart","maheswariashish@gmail.com"),
-(18,"Neelam","rao","F","9652385745",39,350,"MD","neural","raoneelam46@gmail.com"),
-(19,"Priyanka","Sharma","F","8857638923",24,250,"BDS","teeth","priyanka24sharma@gmail.com"),
-(20,"Gaurav","Tripathi","M","8112857382",40,400,"MBBS","skin","gaurav00tripathi@gmail.com");
+(1,"Vivek","Bhardwaj","M","9243668213",32,400,"MD","Ear","bhardwajvivek@gmail.com"),
+(2,"Vinod","Gupta","M","9382674321",42,300,"BDS","Lungs","vinod24gupta@gmail.com"),
+(3,"Ashish","Arora","M","8213264251",47,200,"BHMS","Eye","arorashish5871@gmail.com"),
+(4,"Poonam","Mishra","F","7782934712",27,700,"MD","Kidney","punamishra@gmail.com"),
+(5,"Madhu","Srivastva","F","9982675837",33,500,"MD","Heart","srivastvamadhu@gmail.com"),
+(6,"Anoop","Faujdar","M","9788855387",58,550,"MBBS","Lungs","anoopfauji@gmail.com"),
+(7,"Ankita","Khandelwal","F","9985671358",36,300,"BAMS","General_Physicist","khandelwalankita@gmail.com"),
+(8,"Abhishek","Agarwal","M","8763505789",25,200,"Phd","Kidney","abhishekagarwal25@gmail.com"),
+(9,"Piyush","Gupta","M","7855671213",52,400,"MBBS","Heart","piyushgupta562@gmail.com"),
+(10,"Priyanka","Jangid","F","8005628135",68,600,"BDS","Lungs","prinyanka456jangid@gmail.com"),
+(11,"Deepak","Sharma","M","9505745565",38,250,"MS","General_Physicist","dipakshramtalks@gmail.com"),
+(12,"Prakash","Yadav","M","9460812415",47,350,"BAMS","Eye","yadavprakash79@gmail.com"),
+(13,"Harish","Chauhan","M","9855762432",54,450,"PhD","Ear","harishchauhanstarts@gmail.com"),
+(14,"Seema","Patodi","F","9651404283",63,500,"BHMS","Bone","meseemapatodi@gmail.com"),
+(15,"Mukesh","Saxena","M","9887635723",69,450,"BUMS","Bone","saxenamukesh@gmail.com"),
+(16,"Ashok","Gupta","M","9988735721",29,300,"BDS","Ear","ashokgupta@gmail.com"),
+(17,"Ashish","Maheshwari","M","7082172315",35,300,"MBBS","Heart","maheswariashish@gmail.com"),
+(18,"Neelam","rao","F","9652385745",39,350,"MD","Kidney","raoneelam46@gmail.com"),
+(19,"Priyanka","Sharma","F","8857638923",24,250,"BDS","Lungs","priyanka24sharma@gmail.com"),
+(20,"Gaurav","Tripathi","M","8112857382",40,400,"MBBS","Heart","gaurav00tripathi@gmail.com");
 
 
 
 select * from Doctors;
 
-   
+
+insert into Users ( userID , userType, Password)
+values
+(1,'Patient','One'),
+(2,'Patient','Two'),
+(3,'Patient','Three'),
+(4,'Patient','Four'),
+(5,'Patient','Five'),
+(6,'Patient','Six'),
+(7,'Patient','Seven'),
+(8,'Patient','Eight'),
+(9,'Patient','Nine'),
+(10,'Patient','Ten'),
+(11,'Patient','Eleven'),
+(12,'Patient','Twelve'),
+(13,'Patient','Thirteen'),
+(14,'Patient','Fourteen'),
+(15,'Patient','Fifteen'),
+(16,'Patient','Sixteen'),
+(17,'Patient','Seventeen'),
+(18,'Patient','Eighteen'),
+(19,'Patient','Nineteen'),
+(20,'Patient','Twenty'),
+(1,'Doctor','One'),
+(2,'Doctor','Two'),
+(3,'Doctor','Three'),
+(4,'Doctor','Four'),
+(5,'Doctor','Five'),
+(6,'Doctor','Six'),
+(7,'Doctor','Seven'),
+(8,'Doctor','Eight'),
+(9,'Doctor','Nine'),
+(10,'Doctor','Ten'),
+(11,'Doctor','Eleven'),
+(12,'Doctor','Twelve'),
+(13,'Doctor','Thirteen'),
+(14,'Doctor','Fourteen'),
+(15,'Doctor','Fifteen'),
+(16,'Doctor','Sixteen'),
+(17,'Doctor','Seventeen'),
+(18,'Doctor','Eighteen'),
+(19,'Doctor','Nineteen'),
+(20,'Doctor','Twenty');
+

@@ -136,7 +136,7 @@ public class Doctor extends Person
 	/***********************************************************************************************/ 
 	public void DiagonistPatient(int id)
 	{
-		System.out.println("Enter the Appointment_Id of the patient which you want to check!!");
+		System.out.println("Appointment_Id of the patient which you want to check!!");
 		int appid=sc.nextInt();
 		try
 		{
@@ -144,7 +144,7 @@ public class Doctor extends Person
 			Statement st=con.createStatement();
 			st.executeQuery("Select * from Appointment where AppointmentID="+appid+" and Payment_Status='Payed' and Appointment_Status='Pending'");
 			Report rp=new Report();
-			rp.DiagonistReport(id,appid,docid);  //idhr error aa skti hai sayhad .... id vala glt hoga sice hmne entry as parameter (int id) liya hai jo ki doctorid bta ti hai.....
+			rp.DiagonistReport(id,appid,docid);
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());

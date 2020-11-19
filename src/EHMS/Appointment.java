@@ -98,11 +98,11 @@ public class Appointment
 					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Eyes'");
 					while(rs.next())
 					{
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     *\n");
-						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
+						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
+						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  \n");
+						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         \n");
+						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     \n");
+						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
 					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
@@ -122,14 +122,14 @@ public class Appointment
 					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Ear'");
 					while(rs.next())
 					{
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     *\n");
-						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
+						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
+						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  \n");
+						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         \n");
+						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     \n");
+						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
-					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
+					System.out.println("\tEnter the doctor-id which you want to choose");
 					int choosedID = sc.nextInt();
 					return choosedID;
 				}catch(Exception e) {
@@ -146,14 +146,14 @@ public class Appointment
 					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Heart'");
 					while(rs.next())
 					{
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     *\n");
-						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
+						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
+						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  \n");
+						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         \n");
+						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     \n");
+						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
-					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
+					System.out.println("\tEnter the doctor-id which you want to choose ");
 					int choosedID = sc.nextInt();
 					return choosedID;
 				}catch(Exception e) {
@@ -177,7 +177,7 @@ public class Appointment
 						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
-					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
+					System.out.println("\tEnter the doctor-id which you want to choose");
 					int choosedID = sc.nextInt();
 					return choosedID;
 				}catch(Exception e) {
@@ -194,14 +194,14 @@ public class Appointment
 					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Lungs'");
 					while(rs.next())
 					{
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     *\n");
-						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
+						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
+						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  \n");
+						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         \n");
+						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     \n");
+						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
-					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
+					System.out.println("\t Enter the doctor-id which you want to choose ");
 					int choosedID = sc.nextInt();
 					return choosedID;
 				}catch(Exception e) {
@@ -218,17 +218,17 @@ public class Appointment
 					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Kidney'");
 					while(rs.next())
 					{
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     *\n");
-						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
+						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
+						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  \n");
+						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         \n");
+						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     \n");
+						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
 				}catch(Exception e) {
 						System.out.println(e.getMessage());
 					}
-					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
+					System.out.println("\tEnter the doctor-id which you want to choose ");
 					int choosedID = sc.nextInt();
 					return choosedID;
 			}
@@ -242,14 +242,14 @@ public class Appointment
 					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='General_Physicist'");
 					while(rs.next())
 					{
-						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         *\n");
-						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  *\n");
-						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         *\n");
-						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     *\n");
-						System.out.print("\t* Qualification : "+rs.getString(8)+"                      *\n");
+						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
+						System.out.print("\t* Name :          "+rs.getString(2)+" "+rs.getString(3)+"  \n");
+						System.out.print("\t* Entry_Charge :  "+rs.getInt(7)+"                         \n");
+						System.out.print("\t* Email_ID :      "+rs.getString(10)+"                     \n");
+						System.out.print("\t* Qualification : "+rs.getString(8)+"                      \n");
 						System.out.print("\t************************************************************\n");	
 					}
-					System.out.println("\t*** Enter the doctor-id which you want to choose ***");
+					System.out.println("\tEnter the doctor-id which you want to choose ");
 					int choosedID = sc.nextInt();
 					return choosedID;
 				}catch(Exception e) {
@@ -324,7 +324,7 @@ public class Appointment
     {
     	Payment p=new Payment();
     	System.out.println("Doctor-Fees:"+fee);
-    	System.out.println("** Enter the credit card details Below **");
+    	System.out.println("credit card details--");
     	String status=p.CreditCardDetails(fee);
     	return status;
     }
@@ -335,12 +335,13 @@ public class Appointment
 			payment_status=billpayment(docFees);
 			if(payment_status=="Payed")
 			{
-				System.out.println("Appointment confirmed");
+				//System.out.println("Appointment confirmed");
 				try
 				{
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					st.executeUpdate("INSERT INTO Appointments VALUES ('"+Apid+"','"+Problem+"','"+pid+"','"+Doctor_Name+"','"+Doctor_id+"','"+Doctor_Type+"','"+Doctor_Qualification+"','"+docFees+"','"+payment_status+"')");
+					st.executeUpdate("INSERT INTO Appointments VALUES ('"+Apid+"','"+Problem+"','"+pid+"','"+Doctor_Name+"','"+Doctor_id+"','"+Doctor_Type+"','"+Doctor_Qualification+"','"+docFees+"','"+payment_status+"','"+Appointment_Status+"')");
+					System.out.println("ThankYou For visiting us your Appointment Has Been confirmed!!!");
 				}
 				catch(Exception e)
 				{

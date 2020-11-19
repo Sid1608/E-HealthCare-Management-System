@@ -181,8 +181,6 @@ public class Patients extends Person//patient class Inheriting from person class
     /***********************************************************************************************/ 
     public void Givefeedback(int id) 
     {
-    	System.out.println("*********Thank You For Visiting Us*********");
-    	System.out.println("*********Your Feedback meant a lot to us*********");
     	System.out.println("*********Please Fill The Following Feedback Form*********");
     	int pid=id;
     	System.out.println("Patient Id:"+pid);
@@ -198,6 +196,8 @@ public class Patients extends Person//patient class Inheriting from person class
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
 			st.executeUpdate("INSERT INTO feedback VALUES ('"+pid+"','"+points+"','"+Doc_Nature+"','"+Location+"','"+YourComment+"')");
+			System.out.println("------Thank You For Visiting Us");
+	    	System.out.println("------Your Feedback Meant a lot to Us");
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
