@@ -213,7 +213,6 @@ public class Main
 		    	int flag=0;
 		    	int id;
 		    	String pd;
-		    	String userType="Doctor";
 		    	System.out.print("DOCTOR - ID : ");id=sc.nextInt();
 		    	System.out.print("Password : ");pd=sc.next();
 		    	try {
@@ -237,7 +236,8 @@ public class Main
 		    	        System.out.print("\t*                  1.view_DOCTOR_Profile                                                     *\n");
 		    	        System.out.print("\t*                  2.viewAppointments                                                        *\n");
 		    	        System.out.print("\t*                  3.DiagonistPatient                                                        *\n");
-		    	        System.out.print("\t*                  4.LOGOUT                                                                  *\n");
+		    	        System.out.print("\t*                  4.ChangePassword                                                          *\n");
+		    	        System.out.print("\t*                  5.LOGOUT                                                                  *\n");
 		    	        System.out.print("\t*                                                                                            *\n");
 		    	        System.out.print("\t**********************************************************************************************\n");	
 		    			int ch=sc.nextInt();
@@ -263,6 +263,10 @@ public class Main
 		    				}
 		    				case 4:
 		    				{
+		    					d.Change_Password(id);
+		    				}
+		    				case 5:
+		    				{
 		    					checkDoctor = true;
 		    					break;
 		    				}
@@ -272,6 +276,9 @@ public class Main
 		    		}//end of while
 		    			break;
 		    	}//end of if
+		    	else {
+		    		System.out.println("Invalid Username or Password!!!");
+		    	}
 		    	break;
 		    }
 		    case 4:   /**For Patient Registration**/

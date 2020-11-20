@@ -129,8 +129,6 @@ public class Patients extends Person//patient class Inheriting from person class
 				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
 				System.out.print("\t*************************************************************\n");	
     		}
-//    		DBTablePrinter.printTable(con, "");
-//			con.close();
     		
     	}
     	catch(Exception e)
@@ -169,9 +167,10 @@ public class Patients extends Person//patient class Inheriting from person class
     	String NewPassword=sc.next();
     	try 
     	{
+    		String type="Patient";
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeUpdate("UPDATE  Users set Password = "+NewPassword+"where userID = "+id);
+			st.executeUpdate("UPDATE  Users set Password = "+NewPassword+"where userID ="+id+"and userType="+type);//user type bhi lagana hain
 			System.out.println("** Password Updated Successfully **");
 		}catch(Exception e)
 		{
@@ -190,14 +189,14 @@ public class Patients extends Person//patient class Inheriting from person class
     	String Doc_Nature =sc.next();
     	System.out.println("Enter Your Location In (country,state) Form");
     	String Location = sc.next();
-    	System.out.println("Enter Your Feedback Please :");
+    	System.out.println("Your Comment:");
     	String YourComment= sc.next();
     	try {
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
 			st.executeUpdate("INSERT INTO feedback VALUES ('"+pid+"','"+points+"','"+Doc_Nature+"','"+Location+"','"+YourComment+"')");
-			System.out.println("------Thank You For Visiting Us");
-	    	System.out.println("------Your Feedback Meant a lot to Us");
+			System.out.println("-->>Thank You For Visiting Us<<--");
+	    	System.out.println("-->>Your Feedback Meant a lot to Us<<--");
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());

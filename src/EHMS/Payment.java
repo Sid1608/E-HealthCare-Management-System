@@ -13,8 +13,8 @@ public class Payment
 		String cardHolderName=input.next();
 		System.out.println("         CARD-NUMBER : ");
 		int card_no=input.nextInt();
-		System.out.println("         EXPIRY DATE : ");
-		String ExpiryDate=input.next();
+		System.out.println("         EXPsIRY DATE : ");
+		String ExpiryDate=input.nextLine();
 		System.out.println("         CVC number: ");
 		int cvc=input.nextInt();
 		System.out.println("Please Enter 1 to confirm Payment---");

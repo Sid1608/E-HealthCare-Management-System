@@ -333,10 +333,11 @@ public class Appointment
 	{
 			
 			payment_status=billpayment(docFees);
-			if(payment_status=="Payed")
-			{
-				//System.out.println("Appointment confirmed");
+//			if(payment_status=="Payed")
+//			{
+//				//System.out.println("Appointment confirmed");
 				try
+				
 				{
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
@@ -347,11 +348,11 @@ public class Appointment
 				{
 					System.out.println("EXCEPTION OCCURS");
 				}
-			}
-			else
-			{
-				System.out.println("***  Your Appointment is cancelled  ****");
-			}
+			//}
+//			else
+//			{
+//				//System.out.println("***  Your Appointment is cancelled  ****");
+//			}
 
 	}
 	/***********************************************************************************************/ 

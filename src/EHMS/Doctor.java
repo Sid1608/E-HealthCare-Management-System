@@ -61,7 +61,7 @@ public class Doctor extends Person
 			}
 			default:
 			{
-				System.out.println("");
+				System.out.println("Select Appropriate option");
 			}
 				
 		}
@@ -116,35 +116,20 @@ public class Doctor extends Person
     	}
 	}
 	/***********************************************************************************************/ 
-//	public void DiagonistPatient(int id)
-//	{
-//		System.out.println("Enter the Appointment_Id of the patient which you want to check!!");
-//		int appid=sc.nextInt();
-//		try
-//		{
-//			Connection con=ConnectionProvider.getCon();
-//			Statement st=con.createStatement();
-//			st.executeQuery("Select * from Appointment where AppointmentID=appid and Payment_Status='Payed' and Appointment_Status='Pending'");
-//			Report rp=new Report();
-//			rp.DiagonistReport(id,appid,docid);
-//		}catch(Exception e)
-//		{
-//			System.out.println(e.getMessage());
-//		}
-//		
-//	}
-	/***********************************************************************************************/ 
 	public void DiagonistPatient(int id)
 	{
 		System.out.println("Appointment_Id of the patient which you want to check!!");
 		int appid=sc.nextInt();
 		try
 		{
+			String x="Payed";
+			String y="Pending";
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeQuery("Select * from Appointment where AppointmentID="+appid+" and Payment_Status='Payed' and Appointment_Status='Pending'");
+			st.executeQuery("Select * from Appointments where AppointmentID="+appid);//+" and Payment_Status="+x);//+"and Appointment_Status="+y);
+			int pid=GetPatientID(appid);//isme error aa raha hain 
 			Report rp=new Report();
-			rp.DiagonistReport(id,appid,docid);
+			rp.DiagonistReport(pid,appid,id);
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
@@ -152,5 +137,39 @@ public class Doctor extends Person
 		
 	}
 	/***********************************************************************************************/ 
-
+	private int GetPatientID(int appid)
+	{
+		int pid=0;
+		try {
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery("select * from Appointments where AppointmentID="+appid);
+			while(rs.next())
+			{
+				pid=rs.getInt(3);
+			}
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return pid;
+	}
+	/***********************************************************************************************/ 
+	 public void Change_Password(int id)
+	    {
+		 	String type="Doctor";
+	    	System.out.println("** Enter New Password **");
+	    	String NewPassword=sc.next();
+	    	try 
+	    	{
+				Connection con=ConnectionProvider.getCon();
+				Statement st=con.createStatement();
+				st.executeUpdate("UPDATE  Users set Password = "+NewPassword+"where userID = "+id+"and userType="+type);
+				System.out.println("** Password Updated Successfully **");
+			}catch(Exception e)
+			{
+				System.out.println(e.getMessage());
+			}
+	    }
 }
