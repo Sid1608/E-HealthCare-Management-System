@@ -96,7 +96,7 @@ public class Report
 			DBTablePrinter.printTable(con, "Reports");
 		}
 		catch(Exception e)
-		{ System.out.println("EXCEPTION OCCURS");}  
+		{ System.out.println("EXCEPTION OCCURS"+e.getMessage());}  
 	}
 	/***********************************************************************************************/ 
 }

@@ -54,7 +54,7 @@ public class Patients extends Person//patient class Inheriting from person class
 		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeUpdate("insert into Users values('"+password+"','"+PatientID+"','"+"Patient"+"')");
+			st.executeUpdate("insert into Users values('"+PatientID+"','"+"Patient"+"','"+password+"')");
 			System.out.println("Registered Succesfully!!");
 		}catch(Exception e)
 		{
@@ -125,18 +125,18 @@ public class Patients extends Person//patient class Inheriting from person class
 		try {
     		Connection con=ConnectionProvider.getCon();
     		Statement st=con.createStatement();
-    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id+" and Appointment_Status="+"Pending");
+    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id);
     		while(rs.next())
     		{
-    			t++;
-    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
-				System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
-				System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
-				System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
-				System.out.print("\t* Doctor_Id :      "+rs.getInt(5)+"                          \n");
-				System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
-				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
-				System.out.print("\t*************************************************************\n");	
+	    			t++;
+	    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
+					System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
+					System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
+					System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
+					System.out.print("\t* Doctor_Id :      "+rs.getInt(5)+"                          \n");
+					System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
+					System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
+					System.out.print("\t*************************************************************\n");	
     		}
     		
     	}
@@ -157,18 +157,21 @@ public class Patients extends Person//patient class Inheriting from person class
 		try {
     		Connection con=ConnectionProvider.getCon();
     		Statement st=con.createStatement();
-    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id+" and Appointment_Status="+"Completed" );
+    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id);
     		while(rs.next())
     		{
-    			t++;
-    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
-				System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
-				System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
-				System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
-				System.out.print("\t* Doctor_Id :      "+rs.getInt(5)+"                          \n");
-				System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
-				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
-				System.out.print("\t*************************************************************\n");	
+    			if(rs.getString(10).compareTo("Completed")==0)
+    			{
+	    			t++;
+	    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
+					System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
+					System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
+					System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
+					System.out.print("\t* Doctor_Id :      "+rs.getInt(5)+"                          \n");
+					System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
+					System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
+					System.out.print("\t*************************************************************\n");	
+    			}
     		}
     		
     	}
@@ -178,8 +181,7 @@ public class Patients extends Person//patient class Inheriting from person class
     	}
 		if(t==0)
 		{
-			System.out.println("*******You Currently Have No Appointments********");
-			System.out.println("Enter 3 To Book Appointment!!");
+			System.out.println("*******You Have No Past Appointments********");
 		}
     	
     }
@@ -198,8 +200,7 @@ public class Patients extends Person//patient class Inheriting from person class
 				System.out.print("\t* PatientId :         "+rs.getInt(3)+"                          \n");
 				System.out.print("\t* Doctor_Id :         "+rs.getInt(4)+"                          \n");
 				System.out.print("\t* MedicinePrescribed :"+rs.getString(5)+"                       \n");
-				System.out.print("\t* Bill_Amount :       "+rs.getInt(7)+"                          \n");
-				System.out.print("\t* PaymentStatus :     "+rs.getString(8)+"                       \n");
+				System.out.print("\t* Doctor's Message:"+rs.getString(6)+"                          \n");
 				System.out.print("\t*************************************************************\n");	
 				checkReport++;
 			}
@@ -207,7 +208,7 @@ public class Patients extends Person//patient class Inheriting from person class
     		System.out.println(e.getMessage());
     	}
     	if(checkReport==0)
-    			System.out.println("You Have No Report Generated");
+    			System.out.println("*************************You Have No Report Generated**********************************");
     	
     }
     /***********************************************************************************************/     
@@ -217,10 +218,17 @@ public class Patients extends Person//patient class Inheriting from person class
     	String NewPassword=sc.next();
     	try 
     	{
-    		//String type="Patient";
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
 			st.executeUpdate("UPDATE  Users set Password ="+NewPassword+" where userID ="+id+" and userType="+"Patient");
+//			ResultSet rs=st.executeQuery("Select * From Users Where userID="+id);
+//			while(rs.next())
+//			{
+//				if(rs.getString(2)=="Patient");
+//				{
+//					//st.executeUpdate("UPDATE  Users set Password =\"+NewPassword);
+//				}
+//			}
 			System.out.println("** Password Updated Successfully **");
 		}catch(Exception e)
 		{
@@ -228,7 +236,7 @@ public class Patients extends Person//patient class Inheriting from person class
 		}
     }
     /***********************************************************************************************/ 
-    public void Givefeedback(int id) 
+    public void Givefeedback(int id) /*To give Feedback*/
     {
     	System.out.println("*********Please Fill The Following Feedback Form*********");
     	int pid=id;

@@ -50,7 +50,8 @@ public class Main
 		    	        System.out.print("\t*                  4.RemoveDoctor                                                            *\n");
 		    	        System.out.print("\t*                  5.AppointmentsDetail                                                      *\n");
 		    	        System.out.print("\t*                  6.ViewFeedbacks                                                           *\n");
-		    	        System.out.print("\t*                  7.LOGOUT                                                                  *\n");
+		    	        System.out.print("\t*                  7.ViewReports                                                             *\n");
+		    	        System.out.print("\t*                  8.LOGOUT                                                                  *\n");
 		    	        System.out.print("\t**********************************************************************************************\n");	
 		    			int ch=sc.nextInt();
 		    			switch(ch)
@@ -96,6 +97,12 @@ public class Main
 		    					break;
 		    				}
 		    				case 7:
+		    				{
+		    					//TO VIEW FEEDBACK GIVEN BY THE PATIENT//
+		    					a.ViewReports();
+		    					break;
+		    				}
+		    				case 8:
 		    				{
 		    					checkadmin = true;
 		    					break;
@@ -273,6 +280,10 @@ public class Main
 		    				{
 		    					checkDoctor = true;
 		    					break;
+		    				}
+		    				default:
+		    				{
+		    					System.out.println("Select Approprate option");
 		    				}
 		    			}//end of switch.
 		    			if(checkDoctor)

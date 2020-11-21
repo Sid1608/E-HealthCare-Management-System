@@ -90,7 +90,7 @@ public class Appointment
 		{
 			case 1:
 			{
-				Doctor_Type="Eyes";
+				Doctor_Type="Eye";
 				try
 				{
 					Connection con=ConnectionProvider.getCon();

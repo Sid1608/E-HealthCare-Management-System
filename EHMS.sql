@@ -138,7 +138,9 @@ create table Appointments
     Qualification varchar(20),
     DoctorFees int,
     PaymentStatus varchar(33),
-    Appointment_Status varchar(30)
+    Appointment_Status varchar(30),
+    CONSTRAINT FK_p FOREIGN KEY (patientId)REFERENCES Patients(PatientID),
+    CONSTRAINT FK_docid FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID)
 );
 SELECT * FROM Appointments;
 /*******************************Reports Table**********************************************/
@@ -150,7 +152,10 @@ create table Reports
     DoctorID int,
     MedicinePrescribed varchar(200),
     DoctorComment varchar(200),
-    primary key (ReportID)
+    primary key (ReportID),
+    CONSTRAINT FK_apid FOREIGN KEY (appointmentID) REFERENCES Appointments(AppointmentID),
+    CONSTRAINT FK_p FOREIGN KEY (patientID)REFERENCES Patients(PatientID),
+    CONSTRAINT FK_docid FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID)
 );
 select * from Reports;
 drop table feedback;
@@ -162,5 +167,6 @@ create table feedback
     Doc_Nature varchar(200),
     Location varchar(200),
     PatientComment varchar(1000),
-    primary 
+    CONSTRAINT FK_pid FOREIGN KEY (PatientID)
+    REFERENCES Patients(PatientID)
 );

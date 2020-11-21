@@ -111,4 +111,9 @@ public class Admin extends Person
 		{ System.out.println("EXCEPTION OCCURS");}  
 		
 	}  
+	public void ViewReports()
+	{
+		Report r=new Report();
+		r.ShowReport();
+	}
 }

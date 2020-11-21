@@ -41,20 +41,26 @@ public class Doctor extends Person
 			}
 			case 3:
 			{
-				Doctor_Type="Heart/Lungs";
+				Doctor_Type="Heart";
 				break;
 			}
 			case 4:
 			{
+				Doctor_Type="Lungs";
+				break;
+			}
+
+			case 5:
+			{
 				Doctor_Type="Bone";
 				break;
 			}
-			case 5:
+			case 6:
 			{
 				Doctor_Type="Kidney";
 				break;
 			}
-			case 6:
+			case 7:
 			{
 				Doctor_Type="General Physicist";
 				break;
@@ -100,39 +106,71 @@ public class Doctor extends Person
     		ResultSet rs=st.executeQuery("Select * from  Appointments where DoctorID="+docid);
     		while(rs.next())
     		{
-    			t++;
-    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
-				System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
-				System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
-				System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
-				System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
-				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
-				System.out.print("\t*************************************************************\n");	
+    			if(rs.getString(9).compareTo("Payed")==0&&rs.getString(10).compareTo("Pending")==0)
+    			{
+	    			t++;
+	    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
+					System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
+					System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
+					System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
+					System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
+					System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
+					System.out.print("\t*************************************************************\n");	
+    			}
     		}
     	}
     	catch(Exception e)
     	{
     		System.out.println(e.getMessage());
     	}
+		if(t==0)
+			System.out.println("You Currently Don't Have Any Appointment");
 	}
 	/***********************************************************************************************/ 
-	public void DiagonistPatient(int id)
+	int Appchecker(int appid,int docid)
 	{
-		System.out.println("Appointment_Id of the patient which you want to check!!");
-		int appid=sc.nextInt();
-		try
-		{
-			String x="Payed";
-			String y="Pending";
+		try {
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeQuery("Select * from Appointments where AppointmentID="+appid+" and Payment_Status="+x+"and Appointment_Status="+y);
-			int pid=GetPatientID(appid);
-			Report rp=new Report();
-			rp.DiagonistReport(pid,appid,id);
-		}catch(Exception e)
-		{
+			ResultSet rs= st.executeQuery("Select * from Appointments where DoctorID="+docid);
+			while(rs.next())
+			{
+				if(rs.getInt(1)==appid)
+					return 1;
+			}
+		}catch(Exception e) {
 			System.out.println(e.getMessage());
+		}
+		return 0;
+	}
+	/***********************************************************************************************/
+	public void DiagonistPatient(int id)
+	{
+		while(true)
+		{
+			System.out.println("Enter Appointment_Id of the patient which you want to check!!");
+			int appid=sc.nextInt();
+			int f=Appchecker(appid,id);
+			if(f==1)
+			{
+				try
+				{
+					Connection con=ConnectionProvider.getCon();
+					Statement st=con.createStatement();
+					st.executeQuery("Select * from Appointments where AppointmentID="+id);
+					int pid=GetPatientID(appid);
+					Report rp=new Report();
+					rp.DiagonistReport(pid,appid,id);
+				}catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+				break;
+			}
+			else
+			{
+				System.out.println("******Wrong appointmentID****");
+			}
 		}
 		
 	}
