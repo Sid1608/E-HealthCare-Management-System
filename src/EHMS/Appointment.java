@@ -48,7 +48,7 @@ public class Appointment
 		pid=id;
 		System.out.println("Patient ID:"+pid);
 		System.out.println("Enter your Problem:");
-		Problem=sc.next();
+		Problem=sc.nextLine();
 		
 		/*choosing doctor */
 		Doctor_id=ChooseDoctor();
@@ -95,7 +95,7 @@ public class Appointment
 				{
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Eyes'");
+					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='Eye'");
 					while(rs.next())
 					{
 						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
@@ -324,7 +324,7 @@ public class Appointment
     {
     	Payment p=new Payment();
     	System.out.println("Doctor-Fees:"+fee);
-    	System.out.println("credit card details--");
+    	System.out.println("***************************************credit card details--");
     	String status=p.CreditCardDetails(fee);
     	return status;
     }
@@ -333,26 +333,18 @@ public class Appointment
 	{
 			
 			payment_status=billpayment(docFees);
-//			if(payment_status=="Payed")
-//			{
-//				//System.out.println("Appointment confirmed");
-				try
-				
-				{
-					Connection con=ConnectionProvider.getCon();
-					Statement st=con.createStatement();
-					st.executeUpdate("INSERT INTO Appointments VALUES ('"+Apid+"','"+Problem+"','"+pid+"','"+Doctor_Name+"','"+Doctor_id+"','"+Doctor_Type+"','"+Doctor_Qualification+"','"+docFees+"','"+payment_status+"','"+Appointment_Status+"')");
-					System.out.println("ThankYou For visiting us your Appointment Has Been confirmed!!!");
-				}
-				catch(Exception e)
-				{
-					System.out.println("EXCEPTION OCCURS");
-				}
-			//}
-//			else
-//			{
-//				//System.out.println("***  Your Appointment is cancelled  ****");
-//			}
+			try
+			
+			{
+				Connection con=ConnectionProvider.getCon();
+				Statement st=con.createStatement();
+				st.executeUpdate("INSERT INTO Appointments VALUES ('"+Apid+"','"+Problem+"','"+pid+"','"+Doctor_Name+"','"+Doctor_id+"','"+Doctor_Type+"','"+Doctor_Qualification+"','"+docFees+"','"+payment_status+"','"+Appointment_Status+"')");
+				System.out.println("ThankYou For visiting us your Appointment Has Been confirmed!!!");
+			}
+			catch(Exception e)
+			{
+				System.out.println("EXCEPTION OCCURS"+e.getMessage());
+			}
 
 	}
 	/***********************************************************************************************/ 

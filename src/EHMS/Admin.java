@@ -99,7 +99,7 @@ public class Admin extends Person
 		catch(Exception e)
 		{ System.out.println("EXCEPTION OCCURS");}	
 	}
-	/*Admin can view all the all the appointment taking place */
+	/*To view all the all the appointments taking place */
 	public void ViewAppointment()
 	{
 		try 

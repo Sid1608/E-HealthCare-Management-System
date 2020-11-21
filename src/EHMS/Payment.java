@@ -2,7 +2,7 @@
 package EHMS;
 
 import java.util.*;
-/***********************************************************************************************/ 
+/*********************************/ 
 public class Payment 
 {
 	Scanner input=new Scanner(System.in);
@@ -10,9 +10,9 @@ public class Payment
 	{
 		String Status;
 		System.out.println("         CARD-HOLDER Name : ");
-		String cardHolderName=input.next();
+		String cardHolderName=input.nextLine();
 		System.out.println("         CARD-NUMBER : ");
-		int card_no=input.nextInt();
+		String card_no=input.nextLine();
 		System.out.println("         EXPsIRY DATE : ");
 		String ExpiryDate=input.nextLine();
 		System.out.println("         CVC number: ");
@@ -31,4 +31,4 @@ public class Payment
 		}
 	}
 }
-/***********************************************************************************************/ 
+/*********************************/

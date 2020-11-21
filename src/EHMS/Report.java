@@ -69,9 +69,22 @@ public class Report
 			Statement st=con.createStatement();
 			st.executeUpdate("INSERT INTO Reports VALUES ('"+RepId+"','"+appid+"','"+pid+"','"+docid+"','"+MedicinePrescribed+"','"+DoctorsComment+"')");
 			System.out.println("Report Generated Succesfully!!!");
+			ChangeStatus();
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
+		}
+	}
+	void ChangeStatus()
+	{
+		try {
+			Connection con=ConnectionProvider.getCon();
+			Statement st=con.createStatement();
+			st.executeUpdate("UPDATE Appointments SET Appointment_Status='Completed' WHERE AppointmentID="+appid);
+		}
+		catch(Exception e)
+		{
+			System.out.println("e.getMessage()");
 		}
 	}
 	/***********************************************************************************************/ 

@@ -44,20 +44,27 @@ public class Patients extends Person//patient class Inheriting from person class
 			cpd=sc.next();
 			if(password.compareTo(cpd)==0)
 					break;
+			else
+			{
+				System.out.println("Your Password is not matching!!!");
+				System.out.println("*\tRE-ENTER The Password*");
+			}
 		}
-		try {
+		try
+		{
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
 			st.executeUpdate("insert into Users values('"+password+"','"+PatientID+"','"+"Patient"+"')");
 			System.out.println("Registered Succesfully!!");
-		}catch(Exception e){
-			System.out.println("Please enter data in correct format!!");
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
 		}
 		return PatientID;
 		
 	}
     /***********************************************************************************************/
-    public void PatientRegistration(int pid) /*This method add details of the patient in the patient table of ehms database*/
+    public void PatientRegistration(int pid) /*This method add details of the patient in the patient table of EHMS database*/
     {
   
     	super.UserInformation();
@@ -99,7 +106,9 @@ public class Patients extends Person//patient class Inheriting from person class
 			con.close();
 		}
 		catch(Exception e)
-		{ System.out.println("EXCEPTION OCCURS");}  
+		{ 
+			System.out.println("EXCEPTION OCCURS"+e.getMessage());
+		}  
 		
     }
     /***********************************************************************************************/  
@@ -116,7 +125,7 @@ public class Patients extends Person//patient class Inheriting from person class
 		try {
     		Connection con=ConnectionProvider.getCon();
     		Statement st=con.createStatement();
-    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id);
+    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id+" and Appointment_Status="+"Pending");
     		while(rs.next())
     		{
     			t++;
@@ -135,11 +144,49 @@ public class Patients extends Person//patient class Inheriting from person class
     	{
     		System.out.println(e.getMessage());
     	}
+		if(t==0)
+		{
+			System.out.println("*******You Currently Have No Appointments********");
+			System.out.println("Enter 3 To Book Appointment!!");
+		}
+    	
+    }
+    public void AppointmentHistory(int id) 
+    {
+    	int t=0;
+		try {
+    		Connection con=ConnectionProvider.getCon();
+    		Statement st=con.createStatement();
+    		ResultSet rs=st.executeQuery("Select * from  Appointments where PatientID="+id+" and Appointment_Status="+"Completed" );
+    		while(rs.next())
+    		{
+    			t++;
+    			System.out.println("\t*** APPOINTMENT - NUMBER : "+t);
+				System.out.print("\t* Appointment_ID : "+rs.getInt(1)+"                          \n");
+				System.out.print("\t* Problem  :       "+rs.getString(2)+"                       \n");
+				System.out.print("\t* PatientId :      "+rs.getInt(3)+"                          \n");
+				System.out.print("\t* Doctor_Id :      "+rs.getInt(5)+"                          \n");
+				System.out.print("\t* DoctorFees :     "+rs.getString(8)+"                       \n");
+				System.out.print("\t* PaymentStatus :  "+rs.getString(9)+"                       \n");
+				System.out.print("\t*************************************************************\n");	
+    		}
+    		
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    	}
+		if(t==0)
+		{
+			System.out.println("*******You Currently Have No Appointments********");
+			System.out.println("Enter 3 To Book Appointment!!");
+		}
     	
     }
     /***********************************************************************************************/  
     public void ViewReport(int id)
     {
+    	int checkReport=0;
     	try {
     		Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
@@ -154,10 +201,13 @@ public class Patients extends Person//patient class Inheriting from person class
 				System.out.print("\t* Bill_Amount :       "+rs.getInt(7)+"                          \n");
 				System.out.print("\t* PaymentStatus :     "+rs.getString(8)+"                       \n");
 				System.out.print("\t*************************************************************\n");	
+				checkReport++;
 			}
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}
+    	if(checkReport==0)
+    			System.out.println("You Have No Report Generated");
     	
     }
     /***********************************************************************************************/     
@@ -167,10 +217,10 @@ public class Patients extends Person//patient class Inheriting from person class
     	String NewPassword=sc.next();
     	try 
     	{
-    		String type="Patient";
+    		//String type="Patient";
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeUpdate("UPDATE  Users set Password = "+NewPassword+"where userID ="+id+"and userType="+type);//user type bhi lagana hain
+			st.executeUpdate("UPDATE  Users set Password ="+NewPassword+" where userID ="+id+" and userType="+"Patient");
 			System.out.println("** Password Updated Successfully **");
 		}catch(Exception e)
 		{
@@ -187,7 +237,7 @@ public class Patients extends Person//patient class Inheriting from person class
     	int points=sc.nextInt();
     	System.out.println("Nature Of The Doctor");
     	String Doc_Nature =sc.next();
-    	System.out.println("Enter Your Location In (country,state) Form");
+    	System.out.println("Enter Your Location In (country,state) Format");
     	String Location = sc.next();
     	System.out.println("Your Comment:");
     	String YourComment= sc.next();
@@ -202,5 +252,6 @@ public class Patients extends Person//patient class Inheriting from person class
 			System.out.println(e.getMessage());
 		}
     }
+    /***********************************************************************************************/ 
 	
 }

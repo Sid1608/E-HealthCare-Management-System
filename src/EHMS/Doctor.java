@@ -126,8 +126,8 @@ public class Doctor extends Person
 			String y="Pending";
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();
-			st.executeQuery("Select * from Appointments where AppointmentID="+appid);//+" and Payment_Status="+x);//+"and Appointment_Status="+y);
-			int pid=GetPatientID(appid);//isme error aa raha hain 
+			st.executeQuery("Select * from Appointments where AppointmentID="+appid+" and Payment_Status="+x+"and Appointment_Status="+y);
+			int pid=GetPatientID(appid);
 			Report rp=new Report();
 			rp.DiagonistReport(pid,appid,id);
 		}catch(Exception e)
@@ -158,18 +158,19 @@ public class Doctor extends Person
 	/***********************************************************************************************/ 
 	 public void Change_Password(int id)
 	    {
-		 	String type="Doctor";
+		 	//String type="Doctor";
 	    	System.out.println("** Enter New Password **");
 	    	String NewPassword=sc.next();
 	    	try 
 	    	{
 				Connection con=ConnectionProvider.getCon();
 				Statement st=con.createStatement();
-				st.executeUpdate("UPDATE  Users set Password = "+NewPassword+"where userID = "+id+"and userType="+type);
+				st.executeUpdate("UPDATE  Users set Password = "+NewPassword+"where userID = "+id+"and userType="+"Doctor");
 				System.out.println("** Password Updated Successfully **");
 			}catch(Exception e)
 			{
 				System.out.println(e.getMessage());
 			}
 	    }
+	 /***********************************************************************************************/ 
 }

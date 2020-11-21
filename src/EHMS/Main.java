@@ -30,7 +30,7 @@ public class Main
 		int choice = sc.nextInt();
 		switch (choice)
 		{
-		    case 1:  // admins portal
+		    case 1:  // Admins portal
 		    {  
 		    	boolean checkadmin = false;
 		    	System.out.println("*****************Welcome to Admins portal***********************");
@@ -38,7 +38,7 @@ public class Main
 		    	String pd;
 		    	System.out.print("USERNAME-->");un=sc.next();
 		    	System.out.print("Password-->");pd=sc.next();
-		    	if((un.compareTo("Siddharth")==0&&pd.compareTo("1234")==0)||(un.compareTo("Yash")==0&&pd.compareTo("1234")==0))
+		    	if((un.compareTo("abc")==0&&pd.compareTo("1234")==0)||(un.compareTo("xyz")==0&&pd.compareTo("1234")==0))
 		    	{
 		    		while(true)
 		    		{
@@ -57,16 +57,19 @@ public class Main
 		    			{
 		    				case 1:
 		    				{
+		    					/*To view all doctor detail*/
 		    					a.viewDoctors();
 		    					break;
 		    				}
 		    				case 2:
 		    				{
+		    					/*To view all Patient Detail*/
 		    					a.viewPatients();
 		    					break;
 		    				}
 		    				case 3:
 		    				{
+		    					/*To add new doctor*/
 		    					int Id=a.addDoctor();
 		    					d=new Doctor();
 		    					d.DoctorRegistration(Id);
@@ -74,6 +77,7 @@ public class Main
 		    				}
 		    				case 4:
 		    				{
+		    					/*To Remove Doctor*/
 		    					System.out.println("Enter doctorID!!");
 		    					int id=sc.nextInt();
 		    					a.RemoveDoctor(id);
@@ -81,7 +85,7 @@ public class Main
 		    				}
 		    				case 5:
 		    				{
-	    					  //AppointmentsDetail
+	    					  //Appointments
 		    					a.ViewAppointment();
 		    					break;
 		    				}
@@ -104,7 +108,7 @@ public class Main
 		    		
 		    	}
 		    	else
-		    		System.out.println("Invalid username or password");
+		    		System.out.println("Invalid Username or Password");
 		    	break;
 		    }
 		    case 2:   //For Patient   
@@ -130,6 +134,7 @@ public class Main
 				}
 		    	if(flag==1)
 		    	{
+		    		p=new Patients();
 		    		while(true)
 		    		{
 		    			System.out.print("\t**********************************************************************************************\n");
@@ -139,58 +144,57 @@ public class Main
 		    	        System.out.print("\t*                  3.BookAppointments                                                        *\n");
 		    	        System.out.print("\t*                  4.ViewReport                                                              *\n");
 		    	        System.out.print("\t*                  5.viewAppointments                                                        *\n");
-		    	        System.out.print("\t*                  6.ChangePassword                                                          *\n");
-		    	        System.out.print("\t*                  7.Give FeedBack                                                           *\n");
-		    	        System.out.print("\t*                  8.LOGOUT                                                                  *\n");
+		    	        System.out.print("\t*                  6.viewCompletedAppointments                                               *\n");
+		    	        System.out.print("\t*                  7.ChangePassword                                                          *\n");
+		    	        System.out.print("\t*                  8.Give FeedBack                                                           *\n");
+		    	        System.out.print("\t*                  9.LOGOUT                                                                  *\n");
 		    	        System.out.print("\t**********************************************************************************************\n");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
 		    			{
 		    				case 1:
 		    				{
-		    					p=new Patients();
 		    					p.ShowPatientDetails(id);
 		    					break;
 		    				}
 		    				case 2:
 		    				{
-		    					p=new Patients();
 		    					p.viewDoctor();
 		    					break;
 		    				}
 		    				case 3:
 		    				{
-		    					p=new Patients();
 		    					p.BookAppointment(id);
 		    					break;
 		    					
 		    				}
 		    				case 4:
 		    				{
-		    					p=new Patients();
 		    					p.ViewReport(id);
 		    					break;
 		    				}
 		    				case 5:
 		    				{
-		    					p=new Patients();
 		    					p.viewAppointment(id);
 		    					break;
 		    				}
 		    				case 6:
 		    				{
-		    					p=new Patients();
-		    					p.ChangePassword(id);
+		    					p.AppointmentHistory(id) ;
 		    					break;
 		    				}
 		    				case 7:
 		    				{
-		    					p=new Patients();
+		    					p.ChangePassword(id);
+		    					break;
+		    				}
+		    				case 8:
+		    				{
 		    					p.Givefeedback(id) ;
 		    					break;
 		    					
 		    				}
-		    				case 8:
+		    				case 9:
 		    				{
 		    					checkPatient = true;
 		    					break;
@@ -202,7 +206,7 @@ public class Main
 		    	}
 		    	else
 	    		{
-	    			System.out.println("Invalid username or password");
+	    			System.out.println("Invali UserID or password!!!");
 	    		}
 		    	break;
 		    }
@@ -286,7 +290,7 @@ public class Main
 		    	p=new Patients();
 		    	int pid=p.addPatient();
 		    	System.out.println("*** Fill the following details ***");
-		    	p.PatientRegistration(pid);
+		    	p.PatientRegistration(pid);//Patient Registration Form//
 		    	break;
 		    }
 		    case 5:
