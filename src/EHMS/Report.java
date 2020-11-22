@@ -75,7 +75,7 @@ public class Report
 			System.out.println(e.getMessage());
 		}
 	}
-	void ChangeStatus()
+	private void ChangeStatus()
 	{
 		try {
 			Connection con=ConnectionProvider.getCon();

@@ -82,12 +82,13 @@ public class Patients extends Person//patient class Inheriting from person class
     		Statement st=con.createStatement();
     		ResultSet rs=st.executeQuery("Select * from Patients where PatientID="+id);
     		while(rs.next())
-    		{
-    			System.out.println("PatientID: "+rs.getInt(1));
-    			System.out.println("Name: "+rs.getString(2)+" "+rs.getString(3));
-    			System.out.println(""+rs.getString(8));
-    			System.out.println(""+rs.getString(9));
-    			System.out.println(" "+rs.getString(5));
+    		{ 
+    			System.out.println("PatientID:      "+rs.getInt(1));
+    			System.out.println("Name:           "+rs.getString(2)+" "+rs.getString(3));
+    			System.out.println("Blood-Group:    "+rs.getString(8));
+    			System.out.println("Address:        "+rs.getString(9));
+    			System.out.println("Contact-Number: "+rs.getString(5));
+    			System.out.print("\t********************\n");
     		}
     	}
     	catch(Exception e)
@@ -210,30 +211,6 @@ public class Patients extends Person//patient class Inheriting from person class
     	if(checkReport==0)
     			System.out.println("*************************You Have No Report Generated**********************************");
     	
-    }
-    /***********************************************************************************************/     
-    public void ChangePassword(int id)
-    {
-    	System.out.println("** Enter New Password **");
-    	String NewPassword=sc.next();
-    	try 
-    	{
-			Connection con=ConnectionProvider.getCon();
-			Statement st=con.createStatement();
-			st.executeUpdate("UPDATE  Users set Password ="+NewPassword+" where userID ="+id+" and userType="+"Patient");
-//			ResultSet rs=st.executeQuery("Select * From Users Where userID="+id);
-//			while(rs.next())
-//			{
-//				if(rs.getString(2)=="Patient");
-//				{
-//					//st.executeUpdate("UPDATE  Users set Password =\"+NewPassword);
-//				}
-//			}
-			System.out.println("** Password Updated Successfully **");
-		}catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-		}
     }
     /***********************************************************************************************/ 
     public void Givefeedback(int id) /*To give Feedback*/

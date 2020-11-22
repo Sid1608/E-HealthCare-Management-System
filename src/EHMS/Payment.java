@@ -9,7 +9,7 @@ public class Payment
 	public String CreditCardDetails(int fee)//THIS METHOD TAKES THE CREDIT CARD DETILS OF THE PATIENT 
 	{
 		String Status;
-		System.out.println("         CARD-HOLDER Name : ");
+		System.out.println("         CARD-HOLDER Name: ");
 		String cardHolderName=input.nextLine();
 		System.out.println("         CARD-NUMBER : ");
 		String card_no=input.nextLine();

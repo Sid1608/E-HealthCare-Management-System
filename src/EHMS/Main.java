@@ -23,7 +23,7 @@ public class Main
 	        System.out.print("\t*                  2. PATIENT - LOGIN                                                        *\n");
 	        System.out.print("\t*                  3. DOCTOR - LOGIN                                                         *\n");
 	        System.out.print("\t*                                                                                            *\n");
-	        System.out.print("\t*                  4. REGISTER - PATIENT                                                     *\n");
+	        System.out.print("\t*                  4. PATIENT-SIGN-UP                                                        *\n");
 	        System.out.print("\t*                                                                                            *\n");
 	        System.out.print("\t*                  5. EXIT                                                                   *\n");
 	        System.out.print("\t**********************************************************************************************\n");	
@@ -108,6 +108,10 @@ public class Main
 		    					break;
 		    					
 		    				}
+		    				default:
+		    				{
+		    					System.out.println("Please Choose An Appropriate Option!!!");
+		    				}
 		    			}//end of switch
 		    			if(checkadmin)
 		    				break;
@@ -132,7 +136,8 @@ public class Main
 					Statement st=con.createStatement();
 					ResultSet rs=st.executeQuery("Select * from Users");
 					while(rs.next()) {
-						if(rs.getInt(1)==id && rs.getString(2).compareTo("Patient")==0 && (rs.getString(3).compareTo(pd)==0 )){
+						if(rs.getInt(1)==id && rs.getString(2).compareTo("Patient")==0 && (rs.getString(3).compareTo(pd)==0 ))
+						{
 							flag=1;
 						}
 					}
@@ -152,9 +157,8 @@ public class Main
 		    	        System.out.print("\t*                  4.ViewReport                                                              *\n");
 		    	        System.out.print("\t*                  5.viewAppointments                                                        *\n");
 		    	        System.out.print("\t*                  6.viewCompletedAppointments                                               *\n");
-		    	        System.out.print("\t*                  7.ChangePassword                                                          *\n");
-		    	        System.out.print("\t*                  8.Give FeedBack                                                           *\n");
-		    	        System.out.print("\t*                  9.LOGOUT                                                                  *\n");
+		    	        System.out.print("\t*                  7.Give FeedBack                                                           *\n");
+		    	        System.out.print("\t*                  8.LOGOUT                                                                  *\n");
 		    	        System.out.print("\t**********************************************************************************************\n");
 		    			int ch=sc.nextInt();
 		    			switch(ch)
@@ -192,19 +196,18 @@ public class Main
 		    				}
 		    				case 7:
 		    				{
-		    					p.ChangePassword(id);
-		    					break;
-		    				}
-		    				case 8:
-		    				{
 		    					p.Givefeedback(id) ;
 		    					break;
 		    					
 		    				}
-		    				case 9:
+		    				case 8:
 		    				{
 		    					checkPatient = true;
 		    					break;
+		    				}
+		    				default:
+		    				{
+		    					System.out.println("Please Choose An Appropriate Option!!!");
 		    				}
 		    			}
 		    			if(checkPatient)
@@ -247,8 +250,7 @@ public class Main
 		    	        System.out.print("\t*                  1.view_DOCTOR_Profile                                                     *\n");
 		    	        System.out.print("\t*                  2.viewAppointments                                                        *\n");
 		    	        System.out.print("\t*                  3.DiagonistPatient                                                        *\n");
-		    	        System.out.print("\t*                  4.ChangePassword                                                          *\n");
-		    	        System.out.print("\t*                  5.LOGOUT                                                                  *\n");
+		    	        System.out.print("\t*                  4.LOGOUT                                                                  *\n");
 		    	        System.out.print("\t*                                                                                            *\n");
 		    	        System.out.print("\t**********************************************************************************************\n");	
 		    			int ch=sc.nextInt();
@@ -273,10 +275,6 @@ public class Main
 		    					break;
 		    				}
 		    				case 4:
-		    				{
-		    					d.Change_Password(id);
-		    				}
-		    				case 5:
 		    				{
 		    					checkDoctor = true;
 		    					break;

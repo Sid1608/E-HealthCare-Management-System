@@ -46,13 +46,13 @@ public class Doctor extends Person
 			}
 			case 4:
 			{
-				Doctor_Type="Lungs";
+				Doctor_Type="Bone";
 				break;
 			}
 
 			case 5:
 			{
-				Doctor_Type="Bone";
+				Doctor_Type="Lungs";
 				break;
 			}
 			case 6:
@@ -83,12 +83,12 @@ public class Doctor extends Person
     		ResultSet rs=st.executeQuery("Select * from Doctors where DoctorID="+d);
     		while(rs.next())
     		{
-    			System.out.println("DoctorID: "+rs.getInt(1));
-    			System.out.println("Name: "+rs.getString(2)+" "+rs.getString(3));
+    			System.out.println("DoctorID:     "+rs.getInt(1));
+    			System.out.println("Name:         "+rs.getString(2)+" "+rs.getString(3));
     			System.out.println("Qualification "+rs.getString(8));
-    			System.out.println("Department "+rs.getString(9));
-    			System.out.println("Contact No: "+rs.getString(5));
-    			System.out.println("EmailId: "+rs.getString(10));
+    			System.out.println("Department    "+rs.getString(9));
+    			System.out.println("Contact No:   "+rs.getString(5));
+    			System.out.println("EmailId:      "+rs.getString(10));
     		}
     	}
     	catch(Exception e)
@@ -127,7 +127,7 @@ public class Doctor extends Person
 			System.out.println("You Currently Don't Have Any Appointment");
 	}
 	/***********************************************************************************************/ 
-	int Appchecker(int appid,int docid)
+	int Appointment_checker(int appid,int docid)
 	{
 		try {
 			Connection con=ConnectionProvider.getCon();
@@ -150,7 +150,7 @@ public class Doctor extends Person
 		{
 			System.out.println("Enter Appointment_Id of the patient which you want to check!!");
 			int appid=sc.nextInt();
-			int f=Appchecker(appid,id);
+			int f=Appointment_checker(appid,id);
 			if(f==1)
 			{
 				try
@@ -170,6 +170,11 @@ public class Doctor extends Person
 			else
 			{
 				System.out.println("******Wrong appointmentID****");
+				//boolean leave=false;
+				System.out.println("Enter 1 to leave!!!");
+				if(sc.nextInt()==1)
+					break;
+				
 			}
 		}
 		
@@ -193,22 +198,5 @@ public class Doctor extends Person
 		}
 		return pid;
 	}
-	/***********************************************************************************************/ 
-	 public void Change_Password(int id)
-	    {
-		 	//String type="Doctor";
-	    	System.out.println("** Enter New Password **");
-	    	String NewPassword=sc.next();
-	    	try 
-	    	{
-				Connection con=ConnectionProvider.getCon();
-				Statement st=con.createStatement();
-				st.executeUpdate("UPDATE  Users set Password = "+NewPassword+"where userID = "+id+"and userType="+"Doctor");
-				System.out.println("** Password Updated Successfully **");
-			}catch(Exception e)
-			{
-				System.out.println(e.getMessage());
-			}
-	    }
 	 /***********************************************************************************************/ 
 }

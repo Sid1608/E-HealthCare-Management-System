@@ -170,3 +170,4 @@ create table feedback
     CONSTRAINT FK_pid FOREIGN KEY (PatientID)
     REFERENCES Patients(PatientID)
 );
+select * from feedback;

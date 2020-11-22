@@ -5,6 +5,7 @@ public class ConnectionProvider {
 	{
 		try {
 			String url="jdbc:mysql://localhost:3306/HealthcareMangaementSystem";
+			
 			String uname="root";
 			String pass="182736sid";
 			Class.forName("com.mysql.jdbc.Driver");

@@ -25,7 +25,7 @@ public class Admin extends Person
 		}
 		return docid+1;
 	}
-	public int addDoctor()
+	public int addDoctor()/*This Method add doctor in the system. Admin will Add Doctor*/
 	{
 		int DoctorID=AutoDoctorID();
 		String password;
@@ -50,8 +50,7 @@ public class Admin extends Person
 		}
 		return DoctorID;
 	}
-	/*Admin can view all the Doctor detail*/
-	public void viewDoctors()
+	public void viewDoctors()/*Admin can view all the Doctor detail*/
 	{
 		try 
 		{
@@ -64,8 +63,7 @@ public class Admin extends Person
 			System.out.println("EXCEPTION OCCURS");
 		}  
 	}
-	/*Admin can view all the patients detail*/
-	public void viewPatients()
+	public void viewPatients()/*Admin can view all the patients detail*/
 	{
 		try 
 		{
@@ -75,8 +73,7 @@ public class Admin extends Person
 		catch(Exception e)
 		{ System.out.println("EXCEPTION OCCURS");}  
 	}
-	/*Admin can remove doctor */
-	public void RemoveDoctor(int id)
+	public void RemoveDoctor(int id)/*Admin can remove doctor */
 	{
 		try 
 		{
@@ -88,8 +85,8 @@ public class Admin extends Person
 		catch(Exception e)
 		{ System.out.println("EXCEPTION OCCURS"+e.getMessage());}  
 	}
-	/*Admin can view feedback*/
-	public void ViewFeedback() //admin can view all the feedback
+	
+	public void ViewFeedback() //To view Feedback given by Patients. admin can view all the feedback details//
 	{
 		try 
 		{ 
@@ -99,8 +96,8 @@ public class Admin extends Person
 		catch(Exception e)
 		{ System.out.println("EXCEPTION OCCURS");}	
 	}
-	/*To view all the all the appointments taking place */
-	public void ViewAppointment()
+	
+	public void ViewAppointment()/*To view all the all the appointments taking place */
 	{
 		try 
 		{

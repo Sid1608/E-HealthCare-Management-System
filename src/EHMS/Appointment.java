@@ -10,13 +10,13 @@ public class Appointment
 	private  int Apid;
 	private int pid;
 	private String Problem;
-	int Doctor_id;
-	String Doctor_Name;
-	String Doctor_Type;
-	String Doctor_Qualification;
-	int docFees;
-	String Appointment_Status="Pending";
-	String payment_status;
+	private int Doctor_id;
+	private String Doctor_Name;
+	private String Doctor_Type;
+	private String Doctor_Qualification;
+	private int docFees;
+	private String Appointment_Status="Pending";
+	private String payment_status;
 	Scanner sc=new Scanner(System.in);
 	/***********************************************************************************************/ 
 	private int AutoAppointmentID()/*This Method Returns AppointmentID */
@@ -234,12 +234,12 @@ public class Appointment
 			}
 			case 7:
 			{
-				Doctor_Type="General_Physicist";
+				Doctor_Type="General Physicist";
 				try
 				{
 					Connection con=ConnectionProvider.getCon();
 					Statement st=con.createStatement();
-					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='General_Physicist'");
+					ResultSet rs=st.executeQuery("select * from Doctors where Doctor_Type='General Physicist'");
 					while(rs.next())
 					{
 						System.out.print("\t* Doctor_ID :     "+rs.getInt(1)+"                         \n");
