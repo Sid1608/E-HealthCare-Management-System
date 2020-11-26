@@ -75,7 +75,7 @@ public class Report
 			System.out.println(e.getMessage());
 		}
 	}
-	private void ChangeStatus()
+	private void ChangeStatus()//changes the status of appointment from pending to completed
 	{
 		try {
 			Connection con=ConnectionProvider.getCon();
@@ -88,7 +88,7 @@ public class Report
 		}
 	}
 	/***********************************************************************************************/ 
-	public void ShowReport()/**/
+	public void ShowReport()/*Shows all reports that are being generated*/
 	{
 		try 
 		{

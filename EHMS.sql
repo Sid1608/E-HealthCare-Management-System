@@ -1,4 +1,4 @@
-/********************######################## ----E-Health-CareManagement-System--------- #####################***************/
+/********************----E-Health-CareManagement-System-----***************/
 #drop database HealthcareMangaementSystem;
 create database HealthcareMangaementSystem;#Creating a Database
 use HealthcareMangaementSystem;
@@ -158,7 +158,6 @@ create table Reports
     CONSTRAINT FK_docid FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID)
 );
 select * from Reports;
-drop table feedback;
 /******************************Feedback Table************************************************/
 create table feedback
 (

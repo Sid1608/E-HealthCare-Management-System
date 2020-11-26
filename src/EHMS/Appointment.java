@@ -71,7 +71,7 @@ public class Appointment
 	}
 	/***********************************************************************************************/ 
 
-	int ChooseDoctor()
+	private int ChooseDoctor()
 	{
 		System.out.println("*** Choose Doctor Type According to your problem!! ***");
 		System.out.print("\t**********************************************************************************************\n");
@@ -265,7 +265,7 @@ public class Appointment
 	}
 	/***********************************************************************************************/ 
 	
-	String GetDoctorName(int docID)/**/
+	private String GetDoctorName(int docID)/**/
 	{
 		String DoctorName = null;
 		try
@@ -284,7 +284,7 @@ public class Appointment
 	}
 	/***********************************************************************************************/ 
 	//return doctor Fees
-	int GetDoctorFees(int docID)
+	private int GetDoctorFees(int docID)
 	{
 		int  DoctorFees = 0;
 		try
@@ -302,7 +302,7 @@ public class Appointment
 		return DoctorFees;	
 	}
 	/***********************************************************************************************/ 
-	String GetDoctorQualification(int docID)
+	private String GetDoctorQualification(int docID)
 	{
 		String DoctorQualification = null;
 		try
@@ -320,7 +320,7 @@ public class Appointment
 		return DoctorQualification;
 	}
 	/***********************************************************************************************/ 
-	public String billpayment(int fee)//Method for paying fees to the doctor
+	public String billpayment(int fee)//Method for paying fees to the doctor//
     {
     	Payment p=new Payment();
     	System.out.println("Doctor-Fees:"+fee);

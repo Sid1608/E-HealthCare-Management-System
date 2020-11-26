@@ -9,13 +9,13 @@ public class Payment
 	public String CreditCardDetails(int fee)//THIS METHOD TAKES THE CREDIT CARD DETILS OF THE PATIENT 
 	{
 		String Status;
-		System.out.println("         CARD-HOLDER Name: ");
+		System.out.println("\t\tCARD-HOLDER Name: ");
 		String cardHolderName=input.nextLine();
-		System.out.println("         CARD-NUMBER : ");
+		System.out.println("\t\tCARD-NUMBER : ");
 		String card_no=input.nextLine();
-		System.out.println("         EXPsIRY DATE : ");
+		System.out.println("\t\tEXPIRY DATE : ");
 		String ExpiryDate=input.nextLine();
-		System.out.println("         CVC number: ");
+		System.out.println("\t\tCVC number: ");
 		int cvc=input.nextInt();
 		System.out.println("Please Enter 1 to confirm Payment---");
 		int x=input.nextInt();

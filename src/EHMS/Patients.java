@@ -1,4 +1,4 @@
-//***********************************PATIENT-CLASS***********************************//
+ //***********************************PATIENT-CLASS***********************************//
 package EHMS;
 import EHMS.ConnectionProvider;
 import EHMS.Register;
@@ -30,7 +30,7 @@ public class Patients extends Person//patient class Inheriting from person class
 		return id_Patient+1;
 	}
     /***********************************************************************************************/
-    int addPatient() 
+    public int addPatient() 
 	{
 		int PatientID=AutoPatientID();
 		String password;
@@ -75,7 +75,7 @@ public class Patients extends Person//patient class Inheriting from person class
  
     }
     /***********************************************************************************************/ 
-    public void ShowPatientDetails(int id)
+    public void ShowPatientDetails(int id)/*This method all details of the patient*/
     {
     	try {
     		Connection con=ConnectionProvider.getCon();
@@ -221,11 +221,14 @@ public class Patients extends Person//patient class Inheriting from person class
     	System.out.println("Please Give points to our services out of 10 :");
     	int points=sc.nextInt();
     	System.out.println("Nature Of The Doctor");
-    	String Doc_Nature =sc.next();
-    	System.out.println("Enter Your Location In (country,state) Format");
+    	String Doc_Nature = sc.next();
+    	Doc_Nature +=sc.nextLine();
+    	System.out.println("Enter Your Address below");
     	String Location = sc.next();
+    	Location +=sc.nextLine();
     	System.out.println("Your Comment:");
-    	String YourComment= sc.next();
+    	String YourComment = sc.next();
+    	YourComment +=sc.nextLine();
     	try {
 			Connection con=ConnectionProvider.getCon();
 			Statement st=con.createStatement();

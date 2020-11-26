@@ -144,7 +144,7 @@ public class Doctor extends Person
 		return 0;
 	}
 	/***********************************************************************************************/
-	public void DiagonistPatient(int id)
+	public void DiagonistPatient(int id)//Check patient//
 	{
 		while(true)
 		{

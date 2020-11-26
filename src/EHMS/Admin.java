@@ -86,7 +86,7 @@ public class Admin extends Person
 		{ System.out.println("EXCEPTION OCCURS"+e.getMessage());}  
 	}
 	
-	public void ViewFeedback() //To view Feedback given by Patients. admin can view all the feedback details//
+	public void ViewFeedback() //To view Feedback given by Patients. Admin can view all the feedback details//
 	{
 		try 
 		{ 

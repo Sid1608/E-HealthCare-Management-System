@@ -8,7 +8,7 @@ public class ConnectionProvider {
 			
 			String uname="root";
 			String pass="182736sid";
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con=DriverManager.getConnection(url,uname,pass);
 			return con;
 		}catch(Exception e) {

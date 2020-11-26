@@ -1,6 +1,5 @@
 package EHMS;
-import EHMS.ConnectionProvider;
-import EHMS.Appointment;
+import EHMS.*;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -122,6 +121,7 @@ public class Main
 		    		System.out.println("Invalid Username or Password");
 		    	break;
 		    }
+		    /***********************************************************************************************/ 
 		    case 2:   //For Patient   
 		    {
 		    	boolean checkPatient = false;
@@ -220,6 +220,7 @@ public class Main
 	    		}
 		    	break;
 		    }
+		    /***********************************************************************************************/ 		    
 		    case 3: //For Doctor
 		    {
 		    	boolean checkDoctor = false;
@@ -294,6 +295,7 @@ public class Main
 		    	}
 		    	break;
 		    }
+		    /***********************************************************************************************/ 
 		    case 4:   /**For Patient Registration**/
 		    {
 		    	p=new Patients();
